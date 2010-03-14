@@ -1,0 +1,5 @@
+syntax: glob
+
+*/.svn/*
+.svn/*
+app/templates_c/*
