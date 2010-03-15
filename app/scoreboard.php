@@ -10,7 +10,6 @@ $smarty->compile_check = true;
 require_once 'lib/facebook.php';
 require_once 'lib/facebook_include.php';
 
-
 $facebook->require_frame();
 $user_id = $facebook->require_login();
 
