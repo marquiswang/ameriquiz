@@ -3,3 +3,4 @@ syntax: glob
 */.svn/*
 .svn/*
 app/templates_c/*
+app/lib/facebook_include.php
