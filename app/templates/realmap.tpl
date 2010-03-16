@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://facebook.com/2008/fbml">
 	<head>
+		<link type="text/css" rel="stylesheet" href="styles/global.css" />
 		<link type="text/css" rel="stylesheet" href="styles/realmap.css" />
 		<link type="text/css" rel="stylesheet" href="styles/redmond/jquery-ui.redmond.css" />
 		<link type="text/css" rel="stylesheet" href="styles/facebox/facebox.css" />

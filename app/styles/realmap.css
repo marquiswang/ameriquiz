@@ -1,5 +1,6 @@
 body {
 	padding-left: 20px;
+	background-image: none;
 }
 
 div.score {
@@ -23,6 +24,7 @@ h2 {
 
 h2#desc {
 	position: absolute;
+	margin-top: 5px;
 }
 
 div#map_header {
