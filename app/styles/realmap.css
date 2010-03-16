@@ -74,7 +74,9 @@ div#map {
 	border-bottom: 0px;
 	position: relative;
 	
-	-moz-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 	background-image: url("../maps/Mercator_World_Map_blue.png");
 }
 
@@ -163,4 +165,8 @@ div#sol-date {
 	top: 20px;
 	color: #F00;
 	font-weight: bold;
+}
+
+div#info {
+	font-size: 1.5em;
 }

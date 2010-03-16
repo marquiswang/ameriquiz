@@ -345,6 +345,16 @@ $(document).ready(function(){
 		}
 	});
 
+	$('a[rel*=facebox]').facebox({
+		loadingImage : 'styles/facebox/loading.gif',
+		closeImage   : 'styles/facebox/closelabel.gif',
+		onClose      : function() { 
+			currentlyPlaying = true;
+			begin();
+			return false;
+		}
+	}) 
+
 	///////////////////////////////////////////////////////////////////////////
 	// Register event handlers
 	$("a#share").click(function(e){
@@ -361,8 +371,6 @@ $(document).ready(function(){
 
 	$("div#map").click(function(e){
 		if (!currentlyPlaying) {
-			currentlyPlaying = true;
-			begin();
 			return false;
 		}
 

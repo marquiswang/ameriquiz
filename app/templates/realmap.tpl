@@ -3,6 +3,8 @@
 <head>
 <link type="text/css" rel="stylesheet" href="styles/realmap.css" />
 <link type="text/css" rel="stylesheet" href="styles/redmond/jquery-ui.redmond.css" />
+<link type="text/css" rel="stylesheet" href="styles/facebox/facebox.css" />
+
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/ui.core.js"></script>
@@ -12,10 +14,10 @@
 <script type="text/javascript" src="js/jquery.countDown.js"></script>
 <script type="text/javascript" src="js/realmap.js"></script>
 <script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/facebox.js"></script>
 </head>
 
 <body>
-	<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script>
 	<div id="user_id" style="display: none">{$user_id}</div>
 	<div id="map_header">
 		<h2 id="desc">When and Where?</h2>
@@ -28,7 +30,7 @@
 		<span id="event"></span> <div id="countdown"></div> <span id="status"></span>
 	<div id='points' class='guessed'></div>
 		<div id='button'>
-			<a id="start" href="#">Click to Start</a>
+			<a id="start" href="#info" rel="facebox">Click to Start</a>
 			<a id="share" class="continue" href="#">Share</a>
 			<a id="next" class="guessed" href="#">Next</a>
 	</div>
@@ -45,6 +47,23 @@
 	<div id="return-button">
 			<a href='index.php?{$fb_params}'>BACK TO MENU</a>
 	</div>
-	<script type="text/javascript">FB.init("a56164bf95f2ebb8706961860ebb156f", "xd_receiver.htm");</script>
-</p>
 
+	<div id="info" style="display: none">
+	<ul>
+	<li>Drag the date bar at the bottom to <b>when</b> the event took place.</li>
+	<li>Click on the map <b>where</b> the event took place.</li>
+	</ul>
+	</div>
+
+	<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> 
+	<script type="text/javascript">
+		{literal}
+		FB_RequireFeatures(["CanvasUtil"], function(){
+			FB.XdComm.Server.init("xd_receiver.htm"); 
+			FB.CanvasClient.startTimerToSizeToContent(); 
+		});
+		{/literal}
+	</script>
+</p>
+</body>
+</html>
