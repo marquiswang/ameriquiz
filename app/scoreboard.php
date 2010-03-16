@@ -49,8 +49,8 @@ $user_rank_array=mysql_fetch_row($local_result);
 $user_rank = $user_rank_array[0]+1;
 $user_assoc['rank'] = $user_rank;
 
-// Find the 3 users above
-$query = "SELECT user_id, score, timestamp FROM highscores WHERE score > $user_score ORDER BY score LIMIT 3";
+// Find the 4 users above
+$query = "SELECT user_id, score, timestamp FROM highscores WHERE score > $user_score ORDER BY score LIMIT 4";
 $local_result = mysql_query($query);
 
 // Add these users to local scoreboard
@@ -75,8 +75,8 @@ $local_scores = array_reverse($local_scores);
 // Now add user to local scoreboard
 array_push($local_scores, $user_assoc);
 
-// Find the 3 users below
-$query = "SELECT user_id, score, timestamp FROM highscores WHERE score < $user_score ORDER BY score DESC LIMIT 3";
+// Find the 5 users below
+$query = "SELECT user_id, score, timestamp FROM highscores WHERE score < $user_score ORDER BY score DESC LIMIT 5";
 $local_result = mysql_query($query);
 
 // add these users to local scoreboard
