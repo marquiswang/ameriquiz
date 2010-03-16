@@ -49,7 +49,6 @@ a#return {
   font-size: 0.9em;
   border-bottom: 2px solid #0e1f5b ;
   border-right: 2px solid #0e1f5b ;
-
 }
 
 .pretty-table th[scope=col3]
@@ -59,27 +58,23 @@ a#return {
   text-transform: uppercase;
   font-size: 0.9em;
   border-bottom: 2px solid #0e1f5b ;
-
 }
 
 .pretty-table th+th[scope=col]
 {
   color: #fff;
   background-color: #3b5998;
-
 }
 
 .pretty-table th[scope=row]
 {
   background-color: #95a5c6 ;
   border-right: 2px solid #0e1f5b ;
-
 }
 
 .pretty-table th[scope=row2]
 {
   background-color: #95a5c6 ;
-
 }
 
 .ui-tabs .ui-tabs-hide {
