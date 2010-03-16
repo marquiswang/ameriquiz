@@ -2,5 +2,5 @@ syntax: glob
 
 */.svn/*
 .svn/*
-app/templates_c/*
+app/templates_c/*.php
 app/lib/facebook_include.php
