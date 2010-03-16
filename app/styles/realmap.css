@@ -27,6 +27,12 @@ h2#desc {
 	margin-top: 5px;
 }
 
+div#map_container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 675px;
+}
+
 div#map_header {
 	width: 675px;
 }
