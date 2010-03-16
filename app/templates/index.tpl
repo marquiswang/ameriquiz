@@ -2,7 +2,6 @@
 	<head>
 		<link type = "text/css" rel="stylesheet" href = "styles/index.css"/>
 		<script type = "text/javascript" src="js/jquery.js"></script>
-		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script>
 	</head>
 	
 	<body>
@@ -19,9 +18,5 @@
 		<p class="nav"><a href='scoreboard.php?{$fb_params}'>High Scores</a></p>
 		</div>
 		</center>
-		
-		<script type="text/javascript">
-		    FB.init("a56164bf95f2ebb8706961860ebb156f", "xd_receiver.htm");
-		</script>
 	</body>
 </html>
