@@ -28,18 +28,25 @@
 					<p>Current Score: <span id="score">0</span></p>
 					<p>Total Score: <span id="total_score">{$user_score}</span></p>
 				</div>
+
+				<div id="header2">	
+					<div id="event"></div> 
+
+					<div id="points">Where: <span id="where-points">0</span> Points <br /> When: <span id="when-points">0</span> Points</div>
+					<div id="time-out">Out of time!</div>
+				</div>
 			</div>
 	
 			<div id='map'>
-				<span id="event"></span> 
 				<div id="countdown"></div>
 				<span id="status"></span>
-	
-				<div id='points' class='guessed'></div>
-					<div id='button'>
-						<a id="start" href="#info" rel="facebox">Click to Start</a>
-						<a id="share" class="continue" href="#">Share</a>
-						<a id="next" class="guessed" href="#">Next</a>
+				<div class='button'>
+					<a id="share" class="continue" href="#">Share</a>
+					<a id="next" class="guessed" href="#">Next</a>
+				</div>
+
+				<div id="start-button" class="button">
+					<a id="start" href="#info" rel="facebox">Click to Start</a>
 				</div>
 			
 			</div>

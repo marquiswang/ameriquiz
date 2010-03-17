@@ -38,13 +38,23 @@ div#map_header h3 {
 	display: inline;
 }
 
-div#map span#event {
-	position: absolute;
-	left: 5px;	
-	top: 5px;
-	width: 90%;
-	font-size: 1.5em;
-	text-decoration: small-caps;
+div#header2 {
+	min-height: 3em;
+	border: solid 1px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+	margin-bottom: 5px;
+	padding-right: 30%;
+	padding-left: 5px;
+	position: relative;
+}
+
+div#event {
+	height: 3em;
+	vertical-align: middle;
+	display: table-cell;
 }
 
 div#countdown {
@@ -70,27 +80,36 @@ div#map div {
 	position: absolute;
 }
 
-div#points {
-	height: 120px;
-	text-align: center;
-	width: 100%;
-	margin-top: 80px;
-	font-size: 2.5em;
+div#points,
+div#time-out {
+	color: #EB0B05;
+	position: absolute;
+	right: 5px;
+	top: 0;
+	text-align: right;
+	font-size: 1.2em;
 	display: none;
-	z-index: 5;
 }
 
-div#button {
+div#time-out {
+	display: none;
+}
+
+div.button {
+	margin-top: 5px;
 	text-align: center;
 	width: 100%;
-	margin-top: 275px; 
 	z-index: 2;
 }
 
-div#button a {
+div.button a {
 	text-decoration: none;
 	font-size: 2.5em;
 	color: #000;
+}
+
+div#start-button {
+	margin-top: 180px;
 }
 
 a#next {
@@ -143,7 +162,7 @@ div#sol-date {
 	position: absolute;
 	top: -35px;
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 div#sol-date {
@@ -156,5 +175,12 @@ div#sol-date {
 }
 
 div#info {
-	font-size: 1.5em;
+	font-size: 1.2em;
+}
+
+div#location-tag {
+	font-size: 1.2em;
+	position: absolute;
+	width: 200px;
+	display: none;
 }

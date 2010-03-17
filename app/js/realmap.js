@@ -102,15 +102,11 @@ function markCorrectAnswers() {
 	locImage.css('display', 'none');
 
 	// Tell them what that place is
-	information = $('<div id="info", class="guessed map_marker"></div>');
+	information = $('<div id="location-tag", class="guessed map_marker"></div>');
 	$("#map").append(information);
 	information.html(currentEvent.location);
-	information.css('position','absolute');
 	information.css('top', currentEvent.yPos - xHeight/2 + mapPosY + 10);
 	information.css('left', currentEvent.xPos + mapPosX-50);
-	information.css('width', 100);
-	information.css('text-align','center');
-	information.css('display', 'none');
 
 	// Mark correct date
 	$('#selected-date').css('color', "#00F");
@@ -159,8 +155,14 @@ function guessMade() {
 		markCorrectAnswers();
 
 		$('span#total_score').html(user_score);
-		$('div#points').html("Location: "+ locationPoints + " Points <br /> Date: " + datePoints + " Points");
+		$('span#where-points').html(locationPoints);
+		$('span#when-points').html(datePoints);
 		$('span#score').html(score);
+
+		$('div#time-out').hide();
+		$('div#points').fadeIn(500);
+
+		// Post updated score to database
 		$.ajax({
 			url: 'ajax/updatescore.php',
 			data: {user_id : user_id, score: user_score},
@@ -187,6 +189,8 @@ function loadNewEvent() {
 	$('#selected-date').css('color', "#000");
 	$('#slider-sol-marker').hide();
 	$('#sol-date').hide();
+	$('#points').hide();
+	$('#time-out').hide();
 	guessedDate = false;
 
 	if (!currentEvent) {
@@ -200,7 +204,7 @@ function loadNewEvent() {
     }
 
 	// Print this event's name
-	$('span#event').html(currentEvent.name);
+	$('#event').html(currentEvent.name);
 	
 	$("a#share").fadeOut(200);
 	// Find event's actual position on map
@@ -300,7 +304,8 @@ function updateSliderDate(val) {
 function timeOut()  {
 	markCorrectAnswers();
 
-    $('div#points').html('Out of time!');
+    $('div#points').hide();
+	$('div#time-out').show();
 }
 
 // Takes two points, returns miles between them.
