@@ -132,6 +132,7 @@ div#slider-end {
 div#slider-sol-marker {
 	display: none;
 	position: absolute;
+	top: 1px;
 }
 
 div#selected-date,
