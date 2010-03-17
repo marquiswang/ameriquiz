@@ -20,8 +20,8 @@ $global_result = mysql_query($query);
 // Make Global Scoreboard here
 $global_scores = array();
 while ($score = mysql_fetch_assoc($global_result)) {
-	$user_id = $score['user_id'];
-	$user_details = $facebook->api_client->users_getInfo($user_id, 'first_name, last_name');
+	$highscore_user_id = $score['user_id'];
+	$user_details = $facebook->api_client->users_getInfo($highscore_user_id, 'first_name, last_name');
 
 	// Skip if this user_id doesn't exist.
 	if (is_array($user_details) == 0) continue;
@@ -32,8 +32,6 @@ while ($score = mysql_fetch_assoc($global_result)) {
 }
 
 // GETTING READY TO MAKE LOCAL SCOREBOARD!
-// Current user logged in
-$user_id = $facebook->require_login();
 $user_query = "SELECT user_id, score, timestamp FROM highscores WHERE user_id = $user_id";
 $user_result = mysql_query($user_query);
 $user_assoc = mysql_fetch_assoc($user_result);
@@ -94,9 +92,6 @@ while ($score = mysql_fetch_assoc($local_result)) {
 
 	array_push($local_scores, $score);
 }
-
-// Keep track of current user
-$user_id = $facebook->require_login();
 
 // GETTING READY TO MAKE FRIENDS SCOREBOARD!!!
 $friends = $facebook->api_client->friends_getAppUsers();
