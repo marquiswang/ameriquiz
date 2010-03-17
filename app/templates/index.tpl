@@ -10,14 +10,15 @@
 		<center>
 		<h1>Welcome to <b>AmeriQuiz!</b></h1>
 		
-		<h2>{$fb_user}, your current score is {$user_score}!</h2>
-		
 		<div id="container">
-		<h3>Select An Option</h3>
-		
-		<p class="nav"><a href='realmap.php?{$fb_params}'>Play</a></p>
-		<p class="nav"><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></p>
-		<p class="nav"><a href='scoreboard.php?{$fb_params}'>High Scores</a></p>
+			<h2>{$fb_user}, your total score is:</h2> 
+			<h3>{$user_score}</h3>
+
+			<ul id="nav">	
+				<li><a href='realmap.php?{$fb_params}'>Play</a></li>
+				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
+				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
+			</ul>
 		</div>
 		</center>
 	</body>

@@ -1,5 +1,4 @@
 body {
-	padding-left: 20px;
 	background-image: none;
 }
 
@@ -27,29 +26,8 @@ h2#desc {
 	margin-top: 5px;
 }
 
-div#map_container {
-	margin-left: auto;
-	margin-right: auto;
-	width: 675px;
-}
-
 div#map_header h3 {
 	display: inline;
-}
-
-div#return-button {
-	background-color: #d8dfea;
-	border: 1px solid;
-	border-color: #95a5c6;
-	width: 150px;
-	text-align: center;
-	margin-left: 262px;
-	margin-top: 30px;
-}
-
-div#return-button a {
-	color: #0e1f5b;
-	text-decoration: none;
 }
 
 div#map span#event {

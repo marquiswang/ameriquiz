@@ -37,8 +37,8 @@
 			And that's it!  The game will continue for as long as you wish to keep playing.  Good luck, and have fun!
 		</h4>
 	
-		<center>
-			<a id="return" href='index.php?{$fb_params}'>BACK TO MENU</a>
-		</center>
-	</body>
+		<div id="return-button">
+			<a href='index.php?{$fb_params}'>BACK TO MENU</a>
+		</div>
+</body>
 </html>

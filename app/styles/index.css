@@ -2,20 +2,29 @@ div#container
 {
 	background-color: #95a5c6;
 	border: 1px solid;
-	width: 250px;
+	width: 280px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
-p.nav { 
-    font-family: "Palatino", new century schoolbook, serif;
-    font-style: italic;
+ul#nav {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+
+}
+
+ul#nav li { 
     background-color: #bdc7d8;
     border: 1px solid;
-    border-color #95a5c6 #7f93bc #7f93bc #95a5c6;
+    border-color: #7f93bc;
     width: 150px;
     text-align: center;
+	margin-top: 1em;
 }
 
-p.nav a {
+ul#nav li a {
     color: #0e1f5b;
     text-decoration: none;
 }

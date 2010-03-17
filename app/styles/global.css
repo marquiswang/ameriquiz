@@ -1,16 +1,19 @@
 body
 {
-   background-image: url("Mercator_World_Map.jpg");
-   background-repeat: no-repeat;
-   background-attachment: fixed;
+	background-image: url("Mercator_World_Map.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	width: 675px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-right: 0;
 }
 
 h1
 {
-   font-family: "Palatino", new century schoolbook, serif;
-   font-style: italic;
-   font-size: 2.9em;
-   color: #0e1f5b;
+	font-size: 2.9em;
+	color: #0e1f5b;
 }
 
 h2
@@ -18,21 +21,20 @@ h2
 	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
 	font-size: 1.1em;
 	color: #3b5998;
+	margin-bottom: 0;
 }
 
 h3
 {
-	font-family: "Palatino", new century schoolbook, serif;
-	font-size: 1.7em;
+	margin-top: 0;
+	font-size: 1.3em;
 	color: #0e1f5b;
 }
 
 h4
 {
-	font-family: "Palatino", new century schoolbook, serif;
 	color: #0e1f5b;
 	font-size: 1.2em;
-	font-style: italic;
 }
 
 h5
@@ -40,5 +42,19 @@ h5
 	color: #3b5998;
 }
 
+div#return-button {
+	background-color: #d8dfea;
+	border: 1px solid;
+	border-color: #95a5c6;
+	width: 150px;
+	text-align: center;
+	margin-left: 262px;
+	margin-top: 30px;
+}
+
+div#return-button a {
+	color: #0e1f5b;
+	text-decoration: none;
+}
 
 
