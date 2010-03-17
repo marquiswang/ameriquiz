@@ -76,8 +76,10 @@
 			
 		</div>
 		</div>
-		<br />
-		<a id="return" href='index.php?{$fb_params}'>BACK TO MENU</a>
+
+		<div id="return-button">
+				<a href='index.php?{$fb_params}'>BACK TO MENU</a>
+		</div>
 		</center>
 
 		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> 

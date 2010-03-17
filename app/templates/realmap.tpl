@@ -51,10 +51,12 @@
 				<div id='slider'></div>
 				<div id='slider-beg'></div> <div id='slider-end'></div>
 			</div>
-	
+			
+			<center>
 			<div id="return-button">
 					<a href='index.php?{$fb_params}'>BACK TO MENU</a>
 			</div>
+			</center>
 	
 			<div id="info" style="display: none">
 				<ul>
