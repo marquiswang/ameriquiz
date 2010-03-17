@@ -1,6 +1,14 @@
 body {
 	background-image: none;
+	overflow: visible;
 }
+
+div#map_container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 675px;
+}
+
 
 div.score {
 	font-size: 1.5em;
@@ -143,6 +151,7 @@ div#sol-date {
 	margin-left: -150px;
 	color: #F00;
 	font-weight: bold;
+	z-index: 10;
 }
 
 div#info {
