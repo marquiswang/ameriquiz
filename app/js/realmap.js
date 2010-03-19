@@ -22,7 +22,7 @@ var posGuessX = 0;
 var posGuessY = 0;
 
 var startButtonLoaded = true;
-var eventsInSet = 25;
+var eventsInSet = 20;
 
 var locImage;
 		
@@ -196,7 +196,7 @@ function loadNewEvent() {
 	if (!currentEvent) {
         loadQuiz(eventsInSet);
         currentEvent=events.shift();
-        $('div#points').html('You\'ve just finished a set of '+eventsInSet+' events! Congratulations! <br /> Did you like it? Tell a friend if you did!');
+        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations! Did you like it? Tell a friend if you did!');
 		$('div.guess').hide();
 	    $("a.continue").show();
         loadNextButton();

@@ -54,7 +54,7 @@
 			<div id='slider-container'>
 				<div id='selected-date'></div>
 				<div id='sol-date' class='guessedDate'></div>
-				<div id='slider-sol-marker' class="ui-slider ui-slider-horizontal ui-widget guessedDate"><a href="#" class="ui-slider-handle ui-state-active ui-corner-all"></a></div>
+				<div id='slider-sol-marker' class='ui-slider ui-slider-horizontal ui-widget guessedDate'><a href='#' class='ui-slider-handle ui-state-active ui-corner-all'></a></div>
 				<div id='slider'></div>
 				<div id='slider-beg'></div> <div id='slider-end'></div>
 			</div>
@@ -76,8 +76,8 @@
 		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> 
 		<script type="text/javascript">
 			{literal}
-			FB_RequireFeatures(["CanvasUtil"], function(){
-				FB.XdComm.Server.init("xd_receiver.htm"); 
+			FB_RequireFeatures(["CanvasUtil", "XFBML"], function(){
+				FB.Facebook.init('29102fb4c455adcdcd6ce0139ac674a3', 'xd_receiver.htm');
 				FB.CanvasClient.startTimerToSizeToContent(); 
 			});
 			{/literal}
