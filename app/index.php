@@ -49,7 +49,7 @@ if (is_array($_friends) && count($_friends)) {
 // Convert the array of friends into a comma-delimited string.
 $friends = implode(',', $friends);
 
-$content = "<fb:name uid=\"".$user_id."\" firstnameonly=\"true\" shownetwork=\"false\"/> has started playing <a href=\"http://apps.facebook.com/ameriquiz/\">AmeriQuiz</a> and thinks you should try it too!\n".
+$content = "<fb:name uid=\"".$user_id."\" firstnameonly=\"true\" shownetwork=\"false\"/> has started playing <a href=\"http://www.facebook.com/apps/application.php?id=316321686100\">AmeriQuiz</a> and thinks you should try it too!\n".
 		"<fb:req-choice url=\"".$facebook->get_add_url()."\" label=\"Put ".$app_name." on your profile\"/>";
 
 $content = htmlentities($content);
