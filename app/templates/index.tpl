@@ -35,13 +35,6 @@
 		</fb:serverFbml>
 
 		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-		<script type="text/javascript">
-			{literal}
-			FB_RequireFeatures(["CanvasUtil", "XFBML"], function(){
-				FB.Facebook.init('29102fb4c455adcdcd6ce0139ac674a3', 'xd_receiver.htm');
-				FB.CanvasClient.startTimerToSizeToContent(); 
-			});
-			{/literal}
-		</script>
+		<script src="js/load_fb_api.js" type="text/javascript"></script>
 	</body>
 </html>
