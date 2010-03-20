@@ -4,3 +4,5 @@ syntax: glob
 .svn/*
 app/templates_c/*.php
 app/lib/facebook_include.php
+app/js/load_fb_api.js
+
