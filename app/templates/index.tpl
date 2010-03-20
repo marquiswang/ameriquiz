@@ -4,6 +4,7 @@
 		<link type="text/css" rel="stylesheet" href = "styles/index.css"/>
 
 		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	
 	<body>
@@ -18,8 +19,29 @@
 				<li><a href='realmap.php?{$fb_params}'>Play</a></li>
 				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
+				<li><a id='invite' href='#'>Invite a Friend</a></li>
 			</ul>
 		</div>
 		</center>
+
+		<fb:serverFbml style="width: 755px;">
+			<script type="text/fbml">
+				<fb:fbml> 
+					<fb:request-form action="http://daedalus.marquiswang.com/haproject.mwang/app/index.php" method="POST" invite="true" type="AmeriQuiz" content="{$content}">
+					<fb:multi-friend-selector actiontext="Invite your friends to use AmeriQuiz."> </fb:multi-friend-selector>
+					</fb:request-form>
+				</fb:fbml> 
+			</script>
+		</fb:serverFbml>
+
+		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+		<script type="text/javascript">
+			{literal}
+			FB_RequireFeatures(["CanvasUtil", "XFBML"], function(){
+				FB.Facebook.init('29102fb4c455adcdcd6ce0139ac674a3', 'xd_receiver.htm');
+				FB.CanvasClient.startTimerToSizeToContent(); 
+			});
+			{/literal}
+		</script>
 	</body>
 </html>

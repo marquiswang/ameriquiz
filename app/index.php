@@ -34,11 +34,33 @@ $fb_user = $user_details[0]['first_name'];
 
 $fb_params = http_build_query($facebook->fb_params);
 
+// Generate information for invite box
+$fql = 'SELECT uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1='.$user_id.') AND is_app_user = 1';
+$_friends = $facebook->api_client->fql_query($fql);
+
+// Extract the user ID's returned in the FQL request into a new array.
+$friends = array();
+if (is_array($_friends) && count($_friends)) {
+	foreach ($_friends as $friend) {
+		$friends[] = $friend['uid'];
+	}
+}
+
+// Convert the array of friends into a comma-delimited string.
+$friends = implode(',', $friends);
+
+$content = "<fb:name uid=\"".$user_id."\" firstnameonly=\"true\" shownetwork=\"false\"/> has started playing <a href=\"http://apps.facebook.com/ameriquiz/\">AmeriQuiz</a> and thinks you should try it too!\n".
+		"<fb:req-choice url=\"".$facebook->get_add_url()."\" label=\"Put ".$app_name." on your profile\"/>";
+
+$content = htmlentities($content);
+
+
 // Call smarty template
 $smarty->assign('fb_params', $fb_params);
 $smarty->assign('user_score', $user_score);
 $smarty->assign('fb_user', $fb_user);
+$smarty->assign('friends', $friends);
+$smarty->assign('content', $content);
 
-// DO THIS LAST
 $smarty->display('index.tpl');
 
