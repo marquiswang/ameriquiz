@@ -27,8 +27,8 @@
 		<fb:serverFbml style="width: 755px;">
 			<script type="text/fbml">
 				<fb:fbml> 
-					<fb:request-form action="http://daedalus.marquiswang.com/haproject.mwang/app/index.php" method="POST" invite="true" type="AmeriQuiz" content="{$content}">
-					<fb:multi-friend-selector actiontext="Invite your friends to use AmeriQuiz."> </fb:multi-friend-selector>
+					<fb:request-form action="http://daedalus.marquiswang.com/haproject/index.php" method="POST" invite="true" type="AmeriQuiz" content="{$content}">
+					<fb:multi-friend-selector actiontext="Invite your friends to use AmeriQuiz." exclude_ids="{$friends}"> </fb:multi-friend-selector>
 					</fb:request-form>
 				</fb:fbml> 
 			</script>
