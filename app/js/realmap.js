@@ -26,7 +26,7 @@ var eventsInSet = 20;
 
 var locImage;
 		
-var message = 'I found a great new game!';
+var message = 'I\'ve been playing this new American history game I found! Check it out!';
 var attachment = {
 	'name': 'I know my American history!'
 };
