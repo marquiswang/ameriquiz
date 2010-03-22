@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://facebook.com/2008/fbml">
 	<head>
-		<link type="text/css" rel="stylesheet" href = "styles/global.css"/>
-		<link type="text/css" rel="stylesheet" href = "styles/index.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/global.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
 		<link type="text/css" rel="stylesheet" href="styles/facebox/facebox.css" />
 
 		<script type="text/javascript" src="js/jquery.js"></script>
