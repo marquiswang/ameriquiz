@@ -352,7 +352,7 @@ $(document).ready(function(){
 
 	$('a[rel*=facebox]').facebox({
 		loadingImage : 'styles/facebox/loading.gif',
-		closeImage   : 'styles/facebox/closelabel.gif',
+		closeButton   : 'PLAY',
 		onClose      : function() { 
 			currentlyPlaying = true;
 			begin();
