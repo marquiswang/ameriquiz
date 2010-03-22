@@ -7,7 +7,8 @@ $(document).ready(function() {
 
 	$('a#review').facebox({
 		loadingImage : 'styles/facebox/loading.gif',
-		closeImage   : 'styles/facebox/closelabel.gif',
+		closeButton   : 'REVIEW',
+		cancelButton   : 'CANCEL',
 		onClose      : function() {
 			window.top.location='http://www.facebook.com/topic.php?uid=114956308585&topic=13387';
 		}
