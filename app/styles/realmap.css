@@ -3,14 +3,14 @@ body {
 	overflow: visible;
 }
 
-div#map_container {
+#map_container {
 	margin-left: auto;
 	margin-right: auto;
 	width: 675px;
 }
 
 
-div.score {
+.score {
 	font-size: 1.5em;
 	color: #0e1f5b;
 	display: inline;
@@ -18,7 +18,7 @@ div.score {
 	width: 100%;
 }
 
-div.score p {
+.score p {
 	margin: 0;
 }
 
@@ -34,11 +34,11 @@ h2#desc {
 	margin-top: 5px;
 }
 
-div#map_header h3 {
+#map_header h3 {
 	display: inline;
 }
 
-div#header2 {
+#header2 {
 	min-height: 3em;
 	border: solid 1px;
 	-moz-border-radius: 5px;
@@ -51,19 +51,19 @@ div#header2 {
 	position: relative;
 }
 
-div#event {
+#event {
 	height: 3em;
 	vertical-align: middle;
 	display: table-cell;
 }
 
-div#countdown {
+#countdown {
 	text-align: right;
 	right: 0;
 	top: 0;
 }
 
-div#map {
+#map {
 	height: 400px;
 
 	border: solid 1px;
@@ -76,12 +76,22 @@ div#map {
 	background-image: url("../maps/Mercator_World_Map_blue.png");
 }
 
-div#map div {
+#map .{
 	position: absolute;
 }
 
-div#points,
-div#time-out {
+.map_marker {
+	display: none;
+	position: absolute;
+}
+
+img.map_marker {
+	height: 10px;
+	width: 10px;
+}
+
+#points,
+#time-out {
 	color: #EB0B05;
 	position: absolute;
 	right: 5px;
@@ -91,29 +101,35 @@ div#time-out {
 	display: none;
 }
 
-div#time-out {
+#time-out {
 	display: none;
 }
 
-div.button {
+.button {
 	margin-top: 5px;
 	text-align: center;
 	width: 100%;
 	z-index: 2;
 }
 
-div.button a {
+.button a {
 	text-decoration: none;
 	font-size: 2.5em;
 	color: #000;
 }
 
-div#start-button {
-	margin-top: 180px;
+.action-button {
+	position: absolute;
+	top: 5px;
 }
 
-a#next {
+.action-button a {
 	display: none;
+	top: 0;
+}
+
+#start-button {
+	margin-top: 180px;
 }
 
 a.continue {
@@ -125,13 +141,13 @@ img.map_click {
 	position: absolute;
 }
 
-div#slider-container {
+#slider-container {
 	margin-top: -10px;
 	position: relative;
 }
 
-div#slider-beg,
-div#slider-end {
+#slider-beg,
+#slider-end {
 	text-align: center;
 	width: 50px;
 	font-size: 1.2em;
@@ -139,23 +155,23 @@ div#slider-end {
 	position: absolute;
 }
 
-div#slider-beg {
+#slider-beg {
 	margin-left: -25px;
 }
 
-div#slider-end {
+#slider-end {
 	right: 0px;
 	margin-right: -25px;
 }
 
-div#slider-sol-marker {
+#slider-sol-marker {
 	display: none;
 	position: absolute;
 	top: 1px;
 }
 
-div#selected-date,
-div#sol-date {
+#selected-date,
+#sol-date {
 	width: 150px;
 	margin-left: -75px;
 	z-index: 5;
@@ -165,7 +181,7 @@ div#sol-date {
 	font-size: 1.2em;
 }
 
-div#sol-date {
+#sol-date {
 	top: 20px;
 	width: 300px;
 	margin-left: -150px;
@@ -174,11 +190,11 @@ div#sol-date {
 	z-index: 10;
 }
 
-div#info {
+#info {
 	font-size: 1.2em;
 }
 
-div#location-tag {
+#location-tag {
 	font-size: 1.2em;
 	position: absolute;
 	width: 200px;
