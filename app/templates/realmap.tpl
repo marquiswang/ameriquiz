@@ -20,8 +20,8 @@
 	
 	<body>
 		<div id="map_container">
-			<div id="user_id" style="display: none">{$user_id}</div>
-	
+			<div id="user_id" class="hidden">{$user_id}</div>
+			<div id="category_id" class="hidden">{$category_id}</div>	
 			<div id="map_header">
 				<h2 id="desc">When and Where?</h2>
 				<div class="score">

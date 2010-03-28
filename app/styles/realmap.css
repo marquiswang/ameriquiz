@@ -9,6 +9,9 @@ body {
 	width: 675px;
 }
 
+.hidden {
+	display: none;
+}
 
 .score {
 	font-size: 1.5em;
@@ -127,6 +130,8 @@ img.map_marker {
 	display: none;
 	top: 0;
 }
+
+
 
 #start-button {
 	margin-top: 180px;

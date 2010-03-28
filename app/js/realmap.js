@@ -24,7 +24,7 @@ var posGuessY = 0;
 
 var startButtonLoaded = true;
 var eventsInSet = 20;
-var timerCountdown = 30;
+
 var locImage;
 		
 var message = 'I\'ve been playing this new American history game I found! Check it out!';
@@ -80,7 +80,7 @@ function loadNextButton() {
 function loadQuiz(numEvents){
     $.ajax({
         url: 'ajax/quiz_events.php',
-        data: {numEvents: numEvents},
+        data: {category_id: category_id, numEvents: numEvents},
         type: "GET",
         dataType: 'json',
         success: function(data) {
@@ -115,17 +115,19 @@ function markCorrectAnswers() {
 	}
 	$('#sol-date').css('left', currentEvent.dateSolution/120*100 + "%");
 
-	// Fade in solutions 
-	$('#location-tag').fadeIn(500);
-	$('img#loc-sol').fadeIn(500);
+	// Fade in images
+	information.fadeIn(500);
+	locImage.fadeIn(500);
+
 	$('#slider-sol-marker').fadeIn(500);
 	$('#sol-date').fadeIn(500);
-
+	
 }
 
 // Called when a guess (either date or position) is made. Does nothing if one or other
 // has not yet been made.
-// Marks submit button
+// Otherwise, marks correct location and date, calculates score, updates score, and
+// loads the next button.
 function guessMade() {
 	if (guessedMap && guessedDate) {
 		$('#submit').fadeIn(500);
@@ -135,27 +137,24 @@ function guessMade() {
 function guessSubmit() {
 	$('#slider').slider('disable');
 	disableMap = true;
+    // Stop the countdown
+    $('#countdown').stop(true);
+	$('#countdown').html("");
+
+	// Calculate change in score
+	var guessLng = Map.xPosToLng(posGuessX);
+	var guessLat = Map.yPosToLat(posGuessY);;
+	var offByMiles = Map.distance(guessLat, guessLng, currentEvent.latitude, currentEvent.longitude);
+
+	locationPoints = calcLocScore(offByMiles);
+	score += locationPoints
+	user_score += locationPoints
+
+	datePoints = calcDateScore(Math.abs(dateGuessTicks - currentEvent.dateSolution));
+	score += datePoints
+	user_score += datePoints
 
 	markCorrectAnswers();
-
-	var locationPoints = 0;
-	if (guessedMap) {
-		var guessLng = Map.xPosToLng(posGuessX);
-		var guessLat = Map.yPosToLat(posGuessY);;
-		var offByMiles = Map.distance(guessLat, guessLng, currentEvent.latitude, currentEvent.longitude);
-
-		locationPoints = calcLocScore(offByMiles);
-	} 
-
-	var datePoints = 0;
-	if (guessedDate) {
-		datePoints = calcDateScore(Math.abs(dateGuessTicks - currentEvent.dateSolution));
-	}
-
-	score += locationPoints
-	score += datePoints
-	user_score += locationPoints
-	user_score += datePoints
 
 	$('span#total_score').html(user_score);
 	$('span#where-points').html(locationPoints);
@@ -179,6 +178,9 @@ function guessSubmit() {
 
 function loadNewEvent() {
 	// Shift off first event off events array
+    $('#countdown').stop(true);
+	$('#countdown').html("");
+
 	currentEvent = events.shift();
 
 	// Clear previous events and guesses
@@ -268,18 +270,22 @@ function loadNewEvent() {
 	// Start countdown
 	$('#countdown').show();
 	$('#countdown').countDown({
-		startNumber: timerCountdown,
-		callBack: function(e) {
-			guessSubmit();
-			$('#submit').fadeOut(500);
+		startNumber: 30,
+		callBack: function(me) {
+			$('#countdown').hide();
+			timeOut()
+       		loadNextButton()
         } 
 	});
 }
 
 function updateSliderDate(val) {
 	if (val == null) {
-		$('#selected-date').html('');
-		return 0;
+		$('#selected-date').hide();
+		return;
+	}
+	else {
+		$('#selected-date').show();
 	}
 
 	dateGuessTicks = val;
@@ -307,6 +313,19 @@ function updateSliderDate(val) {
 	$('#selected-date').css('left', (val/120)*100 + "%");
 }
 
+function timeOut()  {
+	if (guessedMap && guessedDate) {
+		guessSubmit();
+		return;
+	}
+
+	markCorrectAnswers();
+
+    $('div#points').hide();
+	$('#submit').hide();
+	$('div#time-out').show();
+}
+
 // Takes two points, returns miles between them.
 function distance(lat1, lon1, lat2, lon2) {
 	var radlat1 = Math.PI * lat1/180
@@ -324,7 +343,11 @@ function distance(lat1, lon1, lat2, lon2) {
 
 $(document).ready(function(){
 	user_score = parseInt($("span#total_score").html());
-	user_id = $('div#user_id').html();
+	user_id = parseInt($('div#user_id').html());
+	category_id = parseInt($("div#category_id").html());
+	if (isNaN(category_id))
+		category_id = null;
+
 
 	loadQuiz(eventsInSet);
 
@@ -370,11 +393,6 @@ $(document).ready(function(){
 	});
 
 	$("a#submit").click(function(e){
-		// Stop the countdown
-		$('#countdown').stop();
-		$('#countdown').html("");
-
-		// Submit these answers!
 		guessSubmit();
 		$(this).fadeOut(500);
 		return false;
