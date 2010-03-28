@@ -113,32 +113,36 @@
 	  
 	  
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus {
-	 border: 1px solid #79b7e7; 
-	 background: #d8dfea;
-	 border: #0e1f5b;
+	 border: 1px solid #0e1f5b; 
+	 background: #95a5c6;
 	  font-weight: bold; 
 	  color: #0e1f5b;
 	  outline-color: #0e1f5b; 
 	  outline-width: medium;
 	  outline-style: none;
-	  //outline: none; }
+	  outline: none; }
 	  
 .ui-state-hover a, .ui-state-hover a:hover {
-	 color: #0e1f5b; 
-	 text-decoration: none; 
-	 outline: none; }
+	 border: 1px solid #0e1f5b; 
+	 background: #95a5c6;
+	  font-weight: bold;
+	   color: #0e1f5b;
+	    outline: none; }
 	 
 	 
 .ui-state-active, .ui-widget-content .ui-state-active { 
 	border: 1px solid #0e1f5b; 
-	background: #d8dfea;
+	background: #95a5c6;
 	font-weight: bold; 
 	color: #0e1f5b;
-	outline-color: #oe1f5b; 
+	outline-color: #0e1f5b; 
 	outline: none; }
 	
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
-	 color: #0e1f5b; 
+	border: 1px solid #0e1f5b; 
+	background: #95a5c6;
+	font-weight: bold; 
+	color: #0e1f5b;
 	 outline-color: #0e1f5b;
 	 outline-style: none;
 	 outline-width: medium;
