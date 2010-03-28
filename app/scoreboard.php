@@ -97,7 +97,7 @@ while ($score = mysql_fetch_assoc($local_result)) {
 $friends = $facebook->api_client->friends_getAppUsers();
 array_push($friends, $user_id);
 $friends_comma = implode(',', $friends);
-$query = "SELECT user_id, score, timestamp FROM highscores WHERE user_id IN ($friends_comma) ORDER BY score DESC LIMIT 14";
+$query = "SELECT user_id, score, timestamp FROM highscores WHERE user_id IN ($friends_comma) ORDER BY score DESC";
 $friend_result = mysql_query($query);
 
 // add friends to friend scoreboard

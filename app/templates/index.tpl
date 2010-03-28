@@ -17,8 +17,8 @@
 
 
 			<ul id="nav1">	
-				<li><a id ='random-play' href='realmap.php?{$fb_params}'>Random Play</a></li>
-				 <li><a id='category-play' href='#'>Category Play</a></li>
+				<li><a id ='random-play' href='realmap.php?{$fb_params}'><b>Random Play</b></a></li>
+				 <li><a id='category-play' href='#'><b>Category Play</b></a></li>
 				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
 				<li><a id='invite' href='#'>Invite a Friend</a></li>
