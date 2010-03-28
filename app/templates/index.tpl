@@ -19,7 +19,7 @@
 				<li><a href='realmap.php?{$fb_params}'>Play</a></li>
 				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
-				<li><a id='invite' href='#'>Find a Friend</a></li>
+				<li><a id='invite' href='#'>Invite a Friend</a></li>
 			</ul>
 		</div>
 		</center>
