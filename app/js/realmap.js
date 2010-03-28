@@ -330,7 +330,8 @@ function updateSliderDate(val) {
 function timeOut()  {
     $('#countdown').html("0");	
     if (guessedMap && guessedDate) {
-		guessSubmit();
+		$('#submit').hide();
+        guessSubmit();
 		return;
 	}
 
