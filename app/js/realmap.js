@@ -25,6 +25,8 @@ var posGuessY = 0;
 var startButtonLoaded = true;
 var eventsInSet = 20;
 
+var countdownStart = 30;
+
 var locImage;
 		
 var message = 'I\'ve been playing this new American history game I found! Check it out!';
@@ -138,8 +140,11 @@ function guessSubmit() {
 	$('#slider').slider('disable');
 	disableMap = true;
     // Stop the countdown
+    var time_spent = countdownStart - parseInt($('#countdown').html());
     $('#countdown').stop(true);
 	$('#countdown').html("");
+
+    var event_id = currentEvent.event_id;
 
 	// Calculate change in score
 	var guessLng = Map.xPosToLng(posGuessX);
@@ -156,10 +161,8 @@ function guessSubmit() {
 
 	markCorrectAnswers();
 
-	$('span#total_score').html(user_score);
 	$('span#where-points').html(locationPoints);
 	$('span#when-points').html(datePoints);
-	$('span#score').html(score);
 
 	$('div#time-out').hide();
 	$('div#points').fadeIn(500);
@@ -170,8 +173,19 @@ function guessSubmit() {
 		data: {user_id : user_id, score: user_score},
 		type: "GET",
 		success: function() {
+	    $('span#total_score').html(user_score);
+	    $('span#score').html(score);
 		}
 	});
+
+    // Post the last played to database
+    $.ajax({
+        url: 'ajax/updateplayed.php',
+        data: {user_id : user_id, event_id: event_id, date_score: datePoints, loc_score: locationPoints, time_spent: time_spent},
+        type: "GET",
+        success: function() {
+        }
+    });
 
 	setTimeout(loadNextButton, 1000);
 }
@@ -270,7 +284,7 @@ function loadNewEvent() {
 	// Start countdown
 	$('#countdown').show();
 	$('#countdown').countDown({
-		startNumber: 30,
+		startNumber: countdownStart,
 		callBack: function(me) {
 			$('#countdown').hide();
 			timeOut()
@@ -314,7 +328,8 @@ function updateSliderDate(val) {
 }
 
 function timeOut()  {
-	if (guessedMap && guessedDate) {
+    $('#countdown').html("0");	
+    if (guessedMap && guessedDate) {
 		guessSubmit();
 		return;
 	}
@@ -348,13 +363,10 @@ $(document).ready(function(){
 	if (isNaN(category_id))
 		category_id = null;
 
-
 	loadQuiz(eventsInSet);
 
 	// Set map offset
 	$('div#map').css("background-position", mapPosX + "px " + mapPosY + "px");
-	
-	
 	
 	// Slider
 	$("#slider").slider({
@@ -373,7 +385,7 @@ $(document).ready(function(){
 		}
 	});
 
-	// Display Rules before game begins
+    // Display Rules before game begins
 	$('a[rel*=facebox]').facebox({
 		loadingImage : 'styles/facebox/loading.gif',
 		closeButton   : 'PLAY',
