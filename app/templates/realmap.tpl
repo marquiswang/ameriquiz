@@ -38,11 +38,15 @@
 			</div>
 	
 			<div id='map'>
+				<img id="loc-guess" src="images/icons/blue-dot.gif" class="map_marker">
+				<img id="loc-sol" src="images/icons/red-dot.gif" class="map_marker">
+				<div id="location-tag", class="guessed map_marker"></div>
 				<div id="countdown"></div>
 				<span id="status"></span>
-				<div class='button'>
+				<div class='button action-button'>
 					<a id="share" class="continue" href="#">Share</a>
 					<a id="next" class="guessed" href="#">Next</a>
+					<a id="submit" class="guessed" href="#">Submit</a>
 				</div>
 
 				<div id="start-button" class="button">

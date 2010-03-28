@@ -97,8 +97,11 @@
                 <div class="content"> \
                 </div> \
                 <div class="footer"> \
+                  <a href="#" class="cancel"> \
+					CANCEL \
+                  </a> \
                   <a href="#" class="close"> \
-                    <img src="/facebox/closelabel.gif" title="close" class="close_image" /> \
+					CLOSE \
                   </a> \
                 </div> \
               </td> \
@@ -128,7 +131,14 @@
       }).show()
 
       $(document).bind('keydown.facebox', function(e) {
-        if (e.keyCode == 27) $.facebox.close()
+        if (e.keyCode == 27) {
+			if ($.facebox.settings.cancelButton) {
+				$.facebox.cancel();
+			}
+			else {
+				$.facebox.close()
+			}
+		}
         return true
       })
       $(document).trigger('loading.facebox')
@@ -142,6 +152,11 @@
       $('#facebox .body').children().fadeIn('normal')
       $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2))
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
+    },
+
+    cancel: function() {
+      $(document).trigger('cancel.facebox')
+      return false
     },
 
     close: function() {
@@ -182,7 +197,6 @@
     else $.facebox.settings.inited = true
 
     $(document).trigger('init.facebox')
-    makeCompatible()
 
     var imageTypes = $.facebox.settings.imageTypes.join('|')
     $.facebox.settings.imageTypesRegexp = new RegExp('\.' + imageTypes + '$', 'i')
@@ -200,7 +214,15 @@
     })
 
     $('#facebox .close').click($.facebox.close)
-    $('#facebox .close_image').attr('src', $.facebox.settings.closeImage)
+	$('#facebox .close').html($.facebox.settings.closeButton);
+
+	if ($.facebox.settings.cancelButton) {
+    	$('#facebox .cancel').click($.facebox.cancel)
+		$('#facebox .cancel').html($.facebox.settings.cancelButton);
+	}
+	else {
+		$('#facebox .cancel').hide();
+	}
   }
   
   // getPageScroll() by quirksmode.com
@@ -230,16 +252,6 @@
       windowHeight = document.body.clientHeight;
     }	
     return windowHeight
-  }
-
-  // Backwards compatibility
-  function makeCompatible() {
-    var $s = $.facebox.settings
-
-    $s.loadingImage = $s.loading_image || $s.loadingImage
-    $s.closeImage = $s.close_image || $s.closeImage
-    $s.imageTypes = $s.image_types || $s.imageTypes
-    $s.faceboxHtml = $s.facebox_html || $s.faceboxHtml
   }
 
   // Figures out what you want to display and displays it
@@ -307,6 +319,18 @@
   /*
    * Bindings
    */
+
+  $(document).bind('cancel.facebox', function() {
+    $(document).unbind('keydown.facebox')
+    $('#facebox').fadeOut(function() {
+      $('#facebox .content').removeClass().addClass('content')
+      hideOverlay()
+      $('#facebox .loading').remove()
+      if ($.facebox.settings.onCancel) {
+        $.facebox.settings.onCancel();
+      }
+    })
+  })
 
   $(document).bind('close.facebox', function() {
     $(document).unbind('keydown.facebox')

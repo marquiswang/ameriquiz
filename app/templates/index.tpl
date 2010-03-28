@@ -1,9 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://facebook.com/2008/fbml">
 	<head>
-		<link type="text/css" rel="stylesheet" href = "styles/global.css"/>
-		<link type="text/css" rel="stylesheet" href = "styles/index.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/global.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/facebox/facebox.css" />
 
 		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/facebox.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	
@@ -22,6 +24,7 @@
 				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
 				<li><a id='invite' href='#'>Invite a Friend</a></li>
+				<li><a id='review' rel="facebox" href='#review-info'>Review Our Game</a></li>
 			</ul>
 		
 		
@@ -34,6 +37,17 @@
 			
 		</div>
 		</center>
+
+		<div id="review-info" style="display: none">
+			<p>
+			This game is one of the semi-finalists for the <a href="http://www.facebook.com/haproject" onclick="window.top.location='http://www.facebook.com/haproject';return false;">Hidden Agenda</a> contest!
+			</p>
+			The goal of this contest is to create an educational Facebook game for high school students. 
+			</p>
+			<p>
+			They pick finalists based on reviews of the games, so help us out and tell them how much you like our game.
+			</p>
+		</div>
 
 		<fb:serverFbml style="width: 755px;">
 			<script type="text/fbml">

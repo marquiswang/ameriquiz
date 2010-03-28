@@ -5,6 +5,7 @@ var containerWidth = 700;
 var containerHeight = 400;
 
 var currentlyPlaying = false;
+var disableMap = true;
 var guessedMap = false;
 var guessedDate = false;
 
@@ -72,7 +73,7 @@ function begin() {
 }
 
 function loadNextButton() {
-	$(".guessed").fadeIn(250);
+	$("#next").fadeIn(250);
 }
 
 // Load quiz items
@@ -90,20 +91,14 @@ function loadQuiz(numEvents){
 
 function markCorrectAnswers() {
 	// Mark correct location
-	locImage = $('<img src="images/icons/red-dot.gif" class="map_marker">');
-	$('#map').append(locImage);
-	var xHeight = 10;
-	var xWidth = 10;
-	locImage.css('position', 'absolute');
+	locImage = $('img#loc-sol');
+	xHeight = locImage.height();
+	xWidth = locImage.width();
 	locImage.css('left', currentEvent.xPos - xWidth/2 + mapPosX);
 	locImage.css('top', currentEvent.yPos - xHeight/2 + mapPosY);
-	locImage.css('height', xHeight);
-	locImage.css('width', xWidth);
-	locImage.css('display', 'none');
 
 	// Tell them what that place is
-	information = $('<div id="location-tag", class="guessed map_marker"></div>');
-	$("#map").append(information);
+	information = $('#location-tag');
 	information.html(currentEvent.location);
 	information.css('top', currentEvent.yPos - xHeight/2 + mapPosY + 10);
 	information.css('left', currentEvent.xPos + mapPosX-50);
@@ -135,44 +130,50 @@ function markCorrectAnswers() {
 // loads the next button.
 function guessMade() {
 	if (guessedMap && guessedDate) {
-        // Stop the countdown
-        $('#countdown').stop(true);
-		$('#countdown').html("");
-
-		// Calculate change in score
-		var guessLng = Map.xPosToLng(posGuessX);
-		var guessLat = Map.yPosToLat(posGuessY);;
-		var offByMiles = Map.distance(guessLat, guessLng, currentEvent.latitude, currentEvent.longitude);
-	
-		locationPoints = calcLocScore(offByMiles);
-		score += locationPoints
-		user_score += locationPoints
-
-		datePoints = calcDateScore(Math.abs(dateGuessTicks - currentEvent.dateSolution));
-		score += datePoints
-		user_score += datePoints
-
-		markCorrectAnswers();
-
-		$('span#total_score').html(user_score);
-		$('span#where-points').html(locationPoints);
-		$('span#when-points').html(datePoints);
-		$('span#score').html(score);
-
-		$('div#time-out').hide();
-		$('div#points').fadeIn(500);
-
-		// Post updated score to database
-		$.ajax({
-			url: 'ajax/updatescore.php',
-			data: {user_id : user_id, score: user_score},
-			type: "GET",
-			success: function() {
-			}
-		});
-	
-		setTimeout(loadNextButton, 1000);
+		$('#submit').fadeIn(500);
 	}
+}
+
+function guessSubmit() {
+	$('#slider').slider('disable');
+	disableMap = true;
+    // Stop the countdown
+    $('#countdown').stop(true);
+	$('#countdown').html("");
+
+	// Calculate change in score
+	var guessLng = Map.xPosToLng(posGuessX);
+	var guessLat = Map.yPosToLat(posGuessY);;
+	var offByMiles = Map.distance(guessLat, guessLng, currentEvent.latitude, currentEvent.longitude);
+
+	locationPoints = calcLocScore(offByMiles);
+	score += locationPoints
+	user_score += locationPoints
+
+	datePoints = calcDateScore(Math.abs(dateGuessTicks - currentEvent.dateSolution));
+	score += datePoints
+	user_score += datePoints
+
+	markCorrectAnswers();
+
+	$('span#total_score').html(user_score);
+	$('span#where-points').html(locationPoints);
+	$('span#when-points').html(datePoints);
+	$('span#score').html(score);
+
+	$('div#time-out').hide();
+	$('div#points').fadeIn(500);
+
+	// Post updated score to database
+	$.ajax({
+		url: 'ajax/updatescore.php',
+		data: {user_id : user_id, score: user_score},
+		type: "GET",
+		success: function() {
+		}
+	});
+
+	setTimeout(loadNextButton, 1000);
 }
 
 function loadNewEvent() {
@@ -183,7 +184,7 @@ function loadNewEvent() {
 	currentEvent = events.shift();
 
 	// Clear previous events and guesses
-	$('.map_marker').remove();
+	$('.map_marker').hide();
 	guessedMap = false;
 
 	$('#selected-date').css('color', "#000");
@@ -263,12 +264,15 @@ function loadNewEvent() {
 
 	$('#slider').slider('enable');
 	$('#slider').slider('value', 60);
-	updateSliderDate(60);
+	updateSliderDate(null);
+	disableMap = false;
 
 	// Start countdown
+	$('#countdown').show();
 	$('#countdown').countDown({
 		startNumber: 30,
 		callBack: function(me) {
+			$('#countdown').hide();
 			timeOut()
        		loadNextButton()
         } 
@@ -276,6 +280,14 @@ function loadNewEvent() {
 }
 
 function updateSliderDate(val) {
+	if (val == null) {
+		$('#selected-date').hide();
+		return;
+	}
+	else {
+		$('#selected-date').show();
+	}
+
 	dateGuessTicks = val;
 	if (currentEvent.increment == 'day') {
 		dateGuess = new Date(sliderBegDate);
@@ -302,9 +314,15 @@ function updateSliderDate(val) {
 }
 
 function timeOut()  {
+	if (guessedMap && guessedDate) {
+		guessSubmit();
+		return;
+	}
+
 	markCorrectAnswers();
 
     $('div#points').hide();
+	$('#submit').hide();
 	$('div#time-out').show();
 }
 
@@ -347,7 +365,6 @@ $(document).ready(function(){
 			if (!guessedDate) {
 				guessedDate = true;
 				guessMade();
-				$(this).slider('disable');
 			}
 		}
 	});
@@ -355,7 +372,7 @@ $(document).ready(function(){
 	// Display Rules before game begins
 	$('a[rel*=facebox]').facebox({
 		loadingImage : 'styles/facebox/loading.gif',
-		closeImage   : 'styles/facebox/closelabel.gif',
+		closeButton   : 'PLAY',
 		onClose      : function() { 
 			currentlyPlaying = true;
 			begin();
@@ -371,6 +388,12 @@ $(document).ready(function(){
 		callPublish(message, attachment, null);
 	});
 
+	$("a#submit").click(function(e){
+		guessSubmit();
+		$(this).fadeOut(500);
+		return false;
+	});
+
 	$("a#next").click(function(e){
 		$(".guessed").fadeOut(250);
 		loadNewEvent();
@@ -378,7 +401,7 @@ $(document).ready(function(){
 	});
 
 	$("div#map").click(function(e){
-		if (!currentlyPlaying) {
+		if (disableMap) {
 			return false;
 		}
 
@@ -392,21 +415,17 @@ $(document).ready(function(){
 		if (!guessedMap) {
 			// A guess has been made!
 			guessedMap = true;
-            
-			// Mark the click
-			clickImage = $('<img src="images/icons/blue-dot.gif" class="map_marker">');
-
-			var xHeight = 10;
-			var xWidth = 10;
-			clickImage.css('position', 'absolute');
-			clickImage.css('left', posGuessX-xWidth/2 + mapPosX);
-			clickImage.css('top', posGuessY-xHeight/2 + mapPosY);
-			clickImage.css('height', xHeight);
-			clickImage.css('width', xWidth);
-			$(this).append(clickImage);
-
-			guessMade();
 		}
+            
+		// Mark the click
+		clickImage = $('img#loc-guess');
+		xHeight = clickImage.height();
+		xWidth = clickImage.width();
+		clickImage.css('left', posGuessX-xWidth/2 + mapPosX);
+		clickImage.css('top', posGuessY-xHeight/2 + mapPosY);
+		clickImage.show();
+
+		guessMade();
 
 		return false;
     });

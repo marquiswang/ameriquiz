@@ -80,6 +80,17 @@
   width:100%;
 }
 
+#facebox .close,
+#facebox .cancel {
+	text-decoration: none;
+	color: #333333;
+	font-size: 1.2em;
+}
+
+#facebox .cancel {
+	margin-right: 1em;
+}
+
 .facebox_hide {
   z-index:-100;
 }
