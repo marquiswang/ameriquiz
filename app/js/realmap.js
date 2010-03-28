@@ -24,7 +24,7 @@ var posGuessY = 0;
 
 var startButtonLoaded = true;
 var eventsInSet = 20;
-var timerCountdown = 5;
+var timerCountdown = 30;
 var locImage;
 		
 var message = 'I\'ve been playing this new American history game I found! Check it out!';
