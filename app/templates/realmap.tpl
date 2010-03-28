@@ -59,6 +59,7 @@
 				<div id='slider-beg'></div> <div id='slider-end'></div>
 			</div>
 			
+			
 			<center>
 			<div id="return-button">
 					<a href='index.php?{$fb_params}'>BACK TO MENU</a>
@@ -71,6 +72,7 @@
 					<li>Click on the map <b>where</b> the event took place.</li>
 				</ul>
 			</div>
+
 		</div>
 	
 		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> 

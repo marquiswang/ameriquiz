@@ -30,7 +30,10 @@ $result2 = mysql_query($query2);
 $result_assoc = mysql_fetch_assoc($result2); 
 $user_score = $result_assoc['score'];
 
-// Now update the current high score
+// Find the categories
+$query3 = "SELECT category_id, name FROM categories";
+$result3 = mysql_query($query3);
+$categories = mysql_fetch_assoc($result3);
 
 
 // Call smarty template
@@ -39,5 +42,6 @@ $smarty->assign('fb_user', $fb_user);
 $smarty->assign('map', $map);
 $smarty->assign('user_score', $user_score);
 $smarty->assign('user_id', $user_id);
+$smarty-assign('categories', $categories);
 
 $smarty->display('realmap.tpl');

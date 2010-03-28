@@ -55,12 +55,20 @@ $content = "<fb:name uid=\"".$user_id."\" firstnameonly=\"true\" shownetwork=\"f
 $content = htmlentities($content);
 
 
+// Find the categories
+$query3 = "SELECT category_id, name FROM categories";
+$result3 = mysql_query($query3);
+$categories = mysql_fetch_assoc($result3);
+
+
+
+
 // Call smarty template
 $smarty->assign('fb_params', $fb_params);
 $smarty->assign('user_score', $user_score);
 $smarty->assign('fb_user', $fb_user);
 $smarty->assign('friends', $friends);
 $smarty->assign('content', $content);
-
+$smarty-assign('categories', $categories);
 $smarty->display('index.tpl');
 

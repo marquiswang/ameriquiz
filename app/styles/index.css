@@ -8,14 +8,14 @@ div#container
 	border-radius: 5px;
 }
 
-ul#nav {
+ul#nav1 {
 	list-style-type: none;
 	margin-left: 0;
 	padding-left: 0;
 
 }
 
-ul#nav li { 
+ul#nav1 li { 
     background-color: #bdc7d8;
     border: 1px solid;
     border-color: #7f93bc;
@@ -24,9 +24,30 @@ ul#nav li {
 	margin-top: 1em;
 }
 
-ul#nav li a {
+ul#nav1 li a {
     color: #0e1f5b;
     text-decoration: none;
 }
 
 
+ul#nav2 {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	display: none;
+
+}
+
+ul#nav2 li { 
+    background-color: #bdc7d8;
+    border: 1px solid;
+    border-color: #7f93bc;
+    width: 150px;
+    text-align: center;
+	margin-top: 1em;
+}
+
+ul#nav2 li a {
+    color: #0e1f5b;
+    text-decoration: none;
+}

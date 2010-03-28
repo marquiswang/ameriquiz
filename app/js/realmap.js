@@ -332,6 +332,8 @@ $(document).ready(function(){
 	// Set map offset
 	$('div#map').css("background-position", mapPosX + "px " + mapPosY + "px");
 	
+	
+	
 	// Slider
 	$("#slider").slider({
 		min: 0, 
@@ -350,6 +352,7 @@ $(document).ready(function(){
 		}
 	});
 
+	// Display Rules before game begins
 	$('a[rel*=facebox]').facebox({
 		loadingImage : 'styles/facebox/loading.gif',
 		closeImage   : 'styles/facebox/closelabel.gif',

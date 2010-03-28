@@ -4,4 +4,10 @@ $(document).ready(function() {
 		FB.Connect.requireSession(); 
 		return false;
 	});
+	
+	$("ul#nav1").click(function(e){
+		$("ul#nav1").hide();
+		$("ul#nav2").show();
+	});
+	
 });
