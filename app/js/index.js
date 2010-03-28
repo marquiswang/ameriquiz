@@ -5,9 +5,10 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	$("ul#nav1").click(function(e){
+	$("a#category-play").click(function(e){
 		$("ul#nav1").hide();
 		$("ul#nav2").show();
+		return false;
 	});
 	
 });

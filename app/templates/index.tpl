@@ -15,17 +15,16 @@
 			<h2>{$fb_user}, your total score is:</h2> 
 			<h3>{$user_score}</h3>
 
-			// Main menu
+
 			<ul id="nav1">	
-				<li><a href='realmap.php?{$fb_params}'>Random Play</a>
-				 <a id='category-play' href='#'>Category Play</a></li>
+				<li><a id ='random-play' href='realmap.php?{$fb_params}'>Random Play</a></li>
+				 <li><a id='category-play' href='#'>Category Play</a></li>
 				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
 				<li><a id='invite' href='#'>Invite a Friend</a></li>
 			</ul>
 		
 		
-			// Categories!
 			{foreach from=$categories item=category_id name=name}
 					<ul id="nav2">
 						<li><a href='realmap.php?{$fb_params}&cat={$categories.category_id}'>{$categories.name}</a>
