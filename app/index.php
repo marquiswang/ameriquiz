@@ -69,6 +69,6 @@ $smarty->assign('user_score', $user_score);
 $smarty->assign('fb_user', $fb_user);
 $smarty->assign('friends', $friends);
 $smarty->assign('content', $content);
-$smarty-assign('categories', $categories);
+$smarty->assign('categories', $categories);
 $smarty->display('index.tpl');
 
