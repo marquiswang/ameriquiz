@@ -95,6 +95,8 @@ while ($score = mysql_fetch_assoc($local_result)) {
 
 // GETTING READY TO MAKE FRIENDS SCOREBOARD!!!
 $friends = $facebook->api_client->friends_getAppUsers();
+if (!(is_array($friends)))
+	$friends = array();
 array_push($friends, $user_id);
 $friends_comma = implode(',', $friends);
 $query = "SELECT user_id, score, timestamp FROM highscores WHERE user_id IN ($friends_comma) ORDER BY score DESC";
