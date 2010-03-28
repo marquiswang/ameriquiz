@@ -5,7 +5,7 @@ require "../lib/dbconnect.php";
 $num_events = $_GET["numEvents"];
 $category_id = $_GET["category_id"];
 if ($category_id === "null")
-	$query = "SELECT event_id, category_id, name, location, datetime, year, month, day, increment, longitude, latitude FROM events ORDER BY RAND() LIMIT $num_events";
+	$query = "SELECT event_id, name, location, year, month, day, increment, longitude, latitude FROM events ORDER BY RAND() LIMIT $num_events";
 else
 	$query = "SELECT 
 		events.event_id, events.category_id, events.name, events.location, events.datetime, 
