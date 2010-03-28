@@ -56,11 +56,12 @@ $content = htmlentities($content);
 
 
 // Find the categories
-$query3 = "SELECT category_id, name FROM categories";
+$query3 = "SELECT category_id, name FROM categories ORDER BY priority";
 $result3 = mysql_query($query3);
-$categories = mysql_fetch_assoc($result3);
-
-
+$categories = array();
+while ($category = mysql_fetch_assoc($result3)) {
+	array_push($categories, $category);
+}
 
 
 // Call smarty template

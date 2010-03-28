@@ -42,6 +42,6 @@ $smarty->assign('fb_user', $fb_user);
 $smarty->assign('map', $map);
 $smarty->assign('user_score', $user_score);
 $smarty->assign('user_id', $user_id);
-$smarty-assign('categories', $categories);
+$smarty->assign('categories', $categories);
 
 $smarty->display('realmap.tpl');
