@@ -142,6 +142,11 @@ a.continue {
 	display: none;
 }
 
+a.newCat {
+	margin-right: 30px;
+	display: none;
+}
+
 img.map_click {
 	position: absolute;
 }

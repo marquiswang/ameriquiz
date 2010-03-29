@@ -23,7 +23,7 @@ var posGuessX = 0;
 var posGuessY = 0;
 
 var startButtonLoaded = true;
-var eventsInSet = 20;
+var eventsInSet = 2;
 
 var num_events_category=0;
 
@@ -79,6 +79,15 @@ function begin() {
 function loadNextButton() {
 	$("#next").fadeIn(250);
 }
+
+function loadContinueButton() {
+	$("#continue").fadeIn(250);
+}
+
+function loadNewCatButton() {
+	$("#new-category").fadeIn(250);
+}
+
 
 // Load quiz items
 function loadQuiz(numEvents){
@@ -215,14 +224,16 @@ function loadNewEvent() {
 		if (category_id == null) {
 	        loadQuiz(eventsInSet);
 	        currentEvent=events.shift();
-	        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations! Did you like it? Tell a friend if you did!');
+	        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations!');
 		    $("a.continue").show();
-   		    loadNextButton();
+   		    loadContinueButton();
 			return;
 		}
 		else {
-			$('#event').html('You\'ve just finished the entire set of '+num_events_category+' questions in the category! Congratulations! Did you like it? Tell a friend if you did!');
-		    $("a.continue").show();
+			$('#event').html('You\'ve just finished the entire set of '+num_events_category+' questions in the category! Congratulations!');
+		    $("#share").show();
+		    $("a.newCat").show();
+		    loadNewCatButton();
 		    return;
 		}
     }
@@ -422,6 +433,12 @@ $(document).ready(function(){
 
 	$("a#next").click(function(e){
 		$(".guessed").fadeOut(250);
+		loadNewEvent();
+		return false;
+	});
+	
+	$("a#continue").click(function(e){
+		$(".continue").fadeOut(250);
 		loadNewEvent();
 		return false;
 	});

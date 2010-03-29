@@ -46,6 +46,8 @@
 				<div class='button action-button'>
 					<a id="share" class="continue" href="#">Share</a>
 					<a id="next" class="guessed" href="#">Next</a>
+					<a id="continue" class="continue" href="#">Continue Playing</a>
+					<a id="new-category" class ="newCat" href="index.php?{$fb_params}&new-category">New Category</a>
 					<a id="submit" class="guessed" href="#">Submit</a>
 				</div>
 
