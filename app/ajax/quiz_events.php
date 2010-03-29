@@ -11,7 +11,7 @@ if ($category_id === "null")
 		FROM events 
 		ORDER BY RAND() 
 		LIMIT $num_events";
-else
+else 
 	$query = 
 		"SELECT 
 			events.event_id, events.name, events.location, events.year, events.month, events.day, 
@@ -22,15 +22,22 @@ else
 		LEFT JOIN categories ON categories.category_id = event_categories.category_id 
 		WHERE event_categories.category_id = $category_id";
 
+
 $result = mysql_query($query);
 
 $events = array();
-
+$num_events = 0;
 while ($event = mysql_fetch_assoc($result)) {
 	array_push($events, $event);
+	$num_events += 1;
 }
 
-echo json_encode($events);
+$return_array = array();
+
+$return_array['events'] = $events;
+$return_array['num_events'] = $num_events;
+
+echo json_encode($return_array);
 
 ?>
 

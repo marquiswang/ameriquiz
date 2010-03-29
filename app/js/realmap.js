@@ -25,6 +25,8 @@ var posGuessY = 0;
 var startButtonLoaded = true;
 var eventsInSet = 20;
 
+var num_events_category=0;
+
 var countdownStart = 30;
 
 var locImage;
@@ -86,7 +88,8 @@ function loadQuiz(numEvents){
         type: "GET",
         dataType: 'json',
         success: function(data) {
-          events = data;
+          events = data.events;
+          num_events_category = data.num_events;
         }
     });
 }
@@ -209,13 +212,19 @@ function loadNewEvent() {
 	guessedDate = false;
 
 	if (!currentEvent) {
-        loadQuiz(eventsInSet);
-        currentEvent=events.shift();
-        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations! Did you like it? Tell a friend if you did!');
-		$('div.guess').hide();
-	    $("a.continue").show();
-        loadNextButton();
-		return;
+		if (category_id == null) {
+	        loadQuiz(eventsInSet);
+	        currentEvent=events.shift();
+	        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations! Did you like it? Tell a friend if you did!');
+		    $("a.continue").show();
+   		    loadNextButton();
+			return;
+		}
+		else {
+			$('#event').html('You\'ve just finished the entire set of '+num_events_category+' questions in the category! Congratulations! Did you like it? Tell a friend if you did!');
+		    $("a.continue").show();
+		    return;
+		}
     }
 
 	// Print this event's name
