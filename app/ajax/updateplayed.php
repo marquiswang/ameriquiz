@@ -259,6 +259,30 @@ if(!$alreadywon){
     }
 }
 
+//Checking if played the last 3 days in a row
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 21";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT DISTINCT DATE(timestamp) AS DATE FROM played WHERE user_id = $user_id ORDER BY DATE DESC LIMIT 2,1) = (SELECT DATE_SUB(DATE(NOW()), INTERVAL 2 DAY))";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 21)";
+        mysql_query($query);
+    }
+}
+
+//Checking if played the last 7 days in a row
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 22";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT DISTINCT DATE(timestamp) AS DATE FROM played WHERE user_id = $user_id ORDER BY DATE DESC LIMIT 6,1) = (SELECT DATE_SUB(DATE(NOW()), INTERVAL 6 DAY))";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 22)";
+        mysql_query($query);
+    }
+}
+
 
 
 ?>
