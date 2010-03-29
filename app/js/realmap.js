@@ -199,6 +199,7 @@ function guessSubmit() {
 				setTimeout(loadNextButton, 1000);
 			}
 			else {
+				$('#fake-facebox #award-info').html(data.awards_won.toString());	
 				setTimeout(loadAwardButton, 1000);
 			}
         }
@@ -425,16 +426,6 @@ $(document).ready(function(){
 		}
 	})
 
-	$('a#next-awards').facebox({
-		loadingImage : 'styles/facebox/loading.gif',
-		closeButton   : 'OKAY',
-		onClose      : function() { 
-			$(".guessed").fadeOut(250);
-			loadNewEvent();
-			return false;
-		}
-	})
- 
 	///////////////////////////////////////////////////////////////////////////
 	// Register event handlers
 	$("a#share").click(function(e){
@@ -451,6 +442,18 @@ $(document).ready(function(){
 
 	$("a#next").click(function(e){
 		$(".guessed").fadeOut(250);
+		loadNewEvent();
+		return false;
+	});
+	
+	$("a#next-awards").click(function(e){
+		$('#fake-facebox').fadeIn(250);
+		return false;
+	});
+
+	$('#fake-facebox a.close').click(function(e){
+		$(".guessed").fadeOut(250);
+		$('#fake-facebox').fadeOut(250);
 		loadNewEvent();
 		return false;
 	});
