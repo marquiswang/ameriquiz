@@ -178,7 +178,7 @@ function guessSubmit() {
 		}
 	});
 
-    // Post the last played to database
+    // Post the last played to database and checks for awards
     $.ajax({
         url: 'ajax/updateplayed.php',
         data: {user_id : user_id, event_id: event_id, date_score: datePoints, loc_score: locationPoints, time_spent: time_spent},
