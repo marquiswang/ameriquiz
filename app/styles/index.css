@@ -36,14 +36,6 @@ div#container
 }
 
 #play {
-	border: solid 1px;
-    border-color: #7f93bc;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	background-color: #bdc7d8;
-	margin-left: 40px;
-	margin-right: 40px;
 }
 
 #play h4 {
@@ -56,15 +48,6 @@ ul#play-buttons {
 }
 
 ul#play-buttons li {
-	height: 100px;
-	width: 100px;
-	display: table-cell;
-	vertical-align: middle;
-	font-size: 1.1em;
-}
-
-ul#play-buttons li.spacer {
-	border: none;
-	width: 15px;
+	margin-top: .2em;
 }
 

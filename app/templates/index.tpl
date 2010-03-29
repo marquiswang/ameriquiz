@@ -19,10 +19,9 @@
 
 			<div id="main-nav" class="nav">
 				<div id="play">
-					<h4> PLAY </h4>
+					<h4> Begin Playing </h4>
 					<ul id="play-buttons">
 						<li><a id='random-play' href='realmap.php?{$fb_params}'><b>Random Events</b></a></li>
-						<li class='spacer'>&nbsp;</li>
 						<li><a id='category-play' href='#'><b>Historical Periods</b></a></li>
 					</ul>
 				</div>
