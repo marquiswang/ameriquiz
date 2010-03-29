@@ -18,9 +18,16 @@
 			<h3>{$user_score}</h3>
 
 			<div id="main-nav" class="nav">
+				<div id="play">
+					<h4> PLAY </h4>
+					<ul id="play-buttons">
+						<li><a id='random-play' href='realmap.php?{$fb_params}'><b>Random Events</b></a></li>
+						<li class='spacer'>&nbsp;</li>
+						<li><a id='category-play' href='#'><b>Historical Periods</b></a></li>
+					</ul>
+				</div>
+
 				<ul id="nav1">	
-					<li><a id ='random-play' href='realmap.php?{$fb_params}'><b>Random Play</b></a></li>
-					<li><a id='category-play' href='#'><b>Category Play</b></a></li>
 					<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 					<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
 					<li><a id='invite' href='#'>Invite a Friend</a></li>
