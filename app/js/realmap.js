@@ -16,14 +16,13 @@ var strikes = 0;
 var events = {};
 var currentEvent;
 
-var eventsDone = 0;
-
 var dateGuessTicks = 0;
 var posGuessX = 0;
 var posGuessY = 0;
 
 var startButtonLoaded = true;
 var eventsInSet = 20;
+var eventIndex = 0;
 
 var countdownStart = 30;
 
@@ -78,15 +77,30 @@ function loadNextButton() {
 	$("#next").fadeIn(250);
 }
 
+function loadContinueButton() {
+	$("#continue").fadeIn(250);
+}
+
+function loadNewCatButton() {
+	$("#new-category").fadeIn(250);
+}
+
+function updateEventCounter(index, total) {
+	$('#index').html(index);
+	$('#total').html(total);
+}
+
 // Load quiz items
 function loadQuiz(numEvents){
+	eventIndex = 0;
     $.ajax({
         url: 'ajax/quiz_events.php',
         data: {category_id: category_id, numEvents: numEvents},
         type: "GET",
         dataType: 'json',
         success: function(data) {
-          events = data;
+          events = data.events;
+          eventsInSet = data.num_events;
         }
     });
 }
@@ -209,14 +223,26 @@ function loadNewEvent() {
 	guessedDate = false;
 
 	if (!currentEvent) {
-        loadQuiz(eventsInSet);
-        currentEvent=events.shift();
-        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations! Did you like it? Tell a friend if you did!');
-		$('div.guess').hide();
-	    $("a.continue").show();
-        loadNextButton();
-		return;
+		if (category_id == null) {
+	        loadQuiz(eventsInSet);
+	        currentEvent=events.shift();
+	        $('#event').html('You\'ve just finished an entire set of '+eventsInSet+' events! Congratulations!');
+		    $("a.continue").show();
+   		    loadContinueButton();
+			return;
+		}
+		else {
+			$('#event').html('You\'ve just finished the entire set of '+eventsInSet+' questions in the category! Congratulations!');
+		    $("#share").show();
+		    $("a.newCat").show();
+		    loadNewCatButton();
+		    return;
+		}
     }
+	else {
+		eventIndex++;
+		updateEventCounter(eventIndex, eventsInSet);
+	}
 
 	// Print this event's name
 	$('#event').html(currentEvent.name);
@@ -413,6 +439,12 @@ $(document).ready(function(){
 
 	$("a#next").click(function(e){
 		$(".guessed").fadeOut(250);
+		loadNewEvent();
+		return false;
+	});
+	
+	$("a#continue").click(function(e){
+		$(".continue").fadeOut(250);
 		loadNewEvent();
 		return false;
 	});

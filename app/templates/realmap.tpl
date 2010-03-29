@@ -38,6 +38,7 @@
 			</div>
 	
 			<div id='map'>
+				<div id="counter">#<span id='index'></span>/<span id='total'></span></div>
 				<img id="loc-guess" src="images/icons/blue-dot.gif" class="map_marker">
 				<img id="loc-sol" src="images/icons/red-dot.gif" class="map_marker">
 				<div id="location-tag", class="guessed map_marker"></div>
@@ -46,6 +47,8 @@
 				<div class='button action-button'>
 					<a id="share" class="continue" href="#">Share</a>
 					<a id="next" class="guessed" href="#">Next</a>
+					<a id="continue" class="continue" href="#">Continue Playing</a>
+					<a id="new-category" class ="newCat" href="index.php?{$fb_params}&new-category">New Category</a>
 					<a id="submit" class="guessed" href="#">Submit</a>
 				</div>
 

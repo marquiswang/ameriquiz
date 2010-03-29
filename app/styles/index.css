@@ -2,21 +2,21 @@ div#container
 {
 	background-color: #95a5c6;
 	border: 1px solid;
-	width: 280px;
+	width: 350px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
 
 
-ul#nav1 {
+.nav ul {
 	list-style-type: none;
 	margin-left: 0;
 	padding-left: 0;
 
 }
 
-ul#nav1 li { 
+.nav ul li { 
     background-color: #bdc7d8;
     border: 1px solid;
     border-color: #7f93bc;
@@ -25,54 +25,46 @@ ul#nav1 li {
 	margin-top: 1em;
 }
 
-ul#nav1 li a {
+.nav ul li a {
     color: #0e1f5b;
     text-decoration: none;
 }
 
 
-ul#nav2 {
-	list-style-type: none;
-	margin-left: 0;
-	padding-left: 0;
+#choose-category {
 	display: none;
-
 }
 
-ul#nav2 li { 
-    background-color: #bdc7d8;
-    border: 1px solid;
+#play {
+	border: solid 1px;
     border-color: #7f93bc;
-    width: 150px;
-    text-align: center;
-	margin-top: 1em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #bdc7d8;
+	margin-left: 40px;
+	margin-right: 40px;
 }
 
-ul#nav2 li a {
-    color: #0e1f5b;
-    text-decoration: none;
+#play h4 {
+	margin-top: .3em;
+	margin-bottom: 0;
 }
 
-ul#nav3 {
-	list-style-type: none;
-	margin-left: 0;
-	padding-left: 0;
-	display: none;
-
+ul#play-buttons {
+	margin-top: .5em;
 }
 
-ul#nav3 li { 
-    background-color: #bdc7d8;
-    border: 1px solid;
-    border-color: #7f93bc;
-    width: 150px;
-    text-align: center;
-	margin-top: 1em;
+ul#play-buttons li {
+	height: 100px;
+	width: 100px;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 1.1em;
 }
 
-ul#nav3 li a {
-    color: #0e1f5b;
-    text-decoration: none;
+ul#play-buttons li.spacer {
+	border: none;
+	width: 15px;
 }
-
 

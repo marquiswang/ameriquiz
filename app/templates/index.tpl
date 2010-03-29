@@ -17,26 +17,36 @@
 			<h2>{$fb_user}, your total score is:</h2> 
 			<h3>{$user_score}</h3>
 
+			<div id="main-nav" class="nav">
+				<div id="play">
+					<h4> PLAY </h4>
+					<ul id="play-buttons">
+						<li><a id='random-play' href='realmap.php?{$fb_params}'><b>Random Events</b></a></li>
+						<li class='spacer'>&nbsp;</li>
+						<li><a id='category-play' href='#'><b>Historical Periods</b></a></li>
+					</ul>
+				</div>
 
-			<ul id="nav1">	
-				<li><a id ='random-play' href='realmap.php?{$fb_params}'><b>Random Play</b></a></li>
-				<li><a id='category-play' href='#'><b>Category Play</b></a></li>
-				<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
-				<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
-				<li><a id='invite' href='#'>Invite a Friend</a></li>
-				<li><a id='review' rel="facebox" href='#review-info'>Review Our Game</a></li>
-			</ul>
+				<ul id="nav1">	
+					<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
+					<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
+					<li><a id='invite' href='#'>Invite a Friend</a></li>
+					<li><a id='review' rel="facebox" href='#review-info'>Review Our Game</a></li>
+				</ul>
+			</div>
 		
-		
-			{foreach from=$categories item=category name=categories}
+			<div id="choose-category" class="nav">		
+				{foreach from=$categories item=category name=categories}
 					<ul id="nav2">
 						<li><a href='realmap.php?{$fb_params}&cat={$category.category_id}'>{$category.name}</a>
 						</li>
 					</ul>
-			{/foreach}
-			<ul id="nav3">
-				<li><a id='menu' href='#'><i>Back To Menu</i></a></li>
-			</ul>
+				{/foreach}
+
+				<ul id="nav3">
+					<li><a id='menu' href='#'><i>Back To Menu</i></a></li>
+				</ul>
+			</div>
 			
 		</div>
 		</center>
