@@ -38,6 +38,7 @@
 			</div>
 	
 			<div id='map'>
+				<div id="counter">#<span id='index'></span>/<span id='total'></span></div>
 				<img id="loc-guess" src="images/icons/blue-dot.gif" class="map_marker">
 				<img id="loc-sol" src="images/icons/red-dot.gif" class="map_marker">
 				<div id="location-tag", class="guessed map_marker"></div>

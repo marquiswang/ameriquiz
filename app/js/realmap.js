@@ -16,16 +16,13 @@ var strikes = 0;
 var events = {};
 var currentEvent;
 
-var eventsDone = 0;
-
 var dateGuessTicks = 0;
 var posGuessX = 0;
 var posGuessY = 0;
 
 var startButtonLoaded = true;
 var eventsInSet = 20;
-
-var num_events_category=0;
+var eventIndex = 0;
 
 var countdownStart = 30;
 
@@ -88,9 +85,14 @@ function loadNewCatButton() {
 	$("#new-category").fadeIn(250);
 }
 
+function updateEventCounter(index, total) {
+	$('#index').html(index);
+	$('#total').html(total);
+}
 
 // Load quiz items
 function loadQuiz(numEvents){
+	eventIndex = 0;
     $.ajax({
         url: 'ajax/quiz_events.php',
         data: {category_id: category_id, numEvents: numEvents},
@@ -98,7 +100,7 @@ function loadQuiz(numEvents){
         dataType: 'json',
         success: function(data) {
           events = data.events;
-          num_events_category = data.num_events;
+          eventsInSet = data.num_events;
         }
     });
 }
@@ -230,13 +232,17 @@ function loadNewEvent() {
 			return;
 		}
 		else {
-			$('#event').html('You\'ve just finished the entire set of '+num_events_category+' questions in the category! Congratulations!');
+			$('#event').html('You\'ve just finished the entire set of '+eventsInSet+' questions in the category! Congratulations!');
 		    $("#share").show();
 		    $("a.newCat").show();
 		    loadNewCatButton();
 		    return;
 		}
     }
+	else {
+		eventIndex++;
+		updateEventCounter(eventIndex, eventsInSet);
+	}
 
 	// Print this event's name
 	$('#event').html(currentEvent.name);

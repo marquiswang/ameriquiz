@@ -79,8 +79,21 @@ h2#desc {
 	background-image: url("../maps/Mercator_World_Map_blue.png");
 }
 
-#map .{
+#map div#counter {
+	font-size: 1.2em;
+	border: solid 1px;
+	-moz-border-radius: 5px 0;
+	-webkit-border-radius: 5px 0;
+	border-radius: 5px 0;
 	position: absolute;
+	top: -1px;
+	left: -1px;
+	background: #FFF;
+	width: 100px;
+	height: 1.5em;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
 .map_marker {
