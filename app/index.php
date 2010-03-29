@@ -1,5 +1,4 @@
 <?php
-
 // Load Smarty templating engine
 require 'smarty/Smarty.class.php';
 require 'lib/dbconnect.php';
@@ -63,7 +62,7 @@ while ($category = mysql_fetch_assoc($result3)) {
 	array_push($categories, $category);
 }
 
-
+$new_category = isset($_GET['new-category']);
 // Call smarty template
 $smarty->assign('fb_params', $fb_params);
 $smarty->assign('user_score', $user_score);
@@ -71,5 +70,6 @@ $smarty->assign('fb_user', $fb_user);
 $smarty->assign('friends', $friends);
 $smarty->assign('content', $content);
 $smarty->assign('categories', $categories);
+$smarty->assign('new_category', $new_category);
 $smarty->display('index.tpl');
 

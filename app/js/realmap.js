@@ -469,6 +469,11 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$("a.newCat").click(function(e) {
+		window.top.location = $(this).attr('href');
+		return false;
+	});
+
 	$("div#map").click(function(e){
 		if (disableMap) {
 			return false;

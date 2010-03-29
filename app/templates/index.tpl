@@ -17,7 +17,7 @@
 			<h2>{$fb_user}, your total score is:</h2> 
 			<h3>{$user_score}</h3>
 
-			<div id="main-nav" class="nav">
+			<div id="main-nav" class="nav" {if $new_category}style="display: none"{/if}>
 				<div id="play">
 					<h4> Begin Playing </h4>
 					<ul id="play-buttons">
@@ -34,7 +34,7 @@
 				</ul>
 			</div>
 		
-			<div id="choose-category" class="nav">		
+			<div id="choose-category" class="nav" {if $new_category}style="display: inline"{/if}>		
 				{foreach from=$categories item=category name=categories}
 					<ul id="nav2">
 						<li><a href='realmap.php?{$fb_params}&cat={$category.category_id}'>{$category.name}</a>
