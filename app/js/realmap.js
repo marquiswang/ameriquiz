@@ -158,6 +158,9 @@ function guessMade() {
 function guessSubmit() {
 	$('#slider').slider('disable');
 	disableMap = true;
+    // Remove the submit button
+    $('#submit').hide();
+
     // Stop the countdown
     var time_spent = countdownStart - parseInt($('#countdown').html());
     $('#countdown').stop(true);
@@ -166,16 +169,23 @@ function guessSubmit() {
     var event_id = currentEvent.event_id;
 
 	// Calculate change in score
-	var guessLng = Map.xPosToLng(posGuessX);
-	var guessLat = Map.yPosToLat(posGuessY);;
-	var offByMiles = Map.distance(guessLat, guessLng, currentEvent.latitude, currentEvent.longitude);
+	var locationPoints = 0;
+    if (guessedMap) {
+        var guessLng = Map.xPosToLng(posGuessX);
+    	var guessLat = Map.yPosToLat(posGuessY);;
+    	var offByMiles = Map.distance(guessLat, guessLng, currentEvent.latitude, currentEvent.longitude);
+    
+    	locationPoints = calcLocScore(offByMiles);
+    }
 
-	locationPoints = calcLocScore(offByMiles);
+    var datePoints = 0;
+    if(guessedDate) {
+    	datePoints = calcDateScore(Math.abs(dateGuessTicks - currentEvent.dateSolution));
+    }
+
 	score += locationPoints
-	user_score += locationPoints
-
-	datePoints = calcDateScore(Math.abs(dateGuessTicks - currentEvent.dateSolution));
 	score += datePoints
+	user_score += locationPoints
 	user_score += datePoints
 
 	markCorrectAnswers();
@@ -320,9 +330,8 @@ function loadNewEvent() {
 	$('#countdown').countDown({
 		startNumber: countdownStart,
 		callBack: function(me) {
-			$('#countdown').hide();
-			timeOut()
-       		loadNextButton()
+       		guessSubmit(); 
+            loadNextButton()
         } 
 	});
 }
@@ -361,20 +370,6 @@ function updateSliderDate(val) {
 	$('#selected-date').css('left', (val/120)*100 + "%");
 }
 
-function timeOut()  {
-    $('#countdown').html("0");	
-    if (guessedMap && guessedDate) {
-		$('#submit').hide();
-        guessSubmit();
-		return;
-	}
-
-	markCorrectAnswers();
-
-    $('div#points').hide();
-	$('#submit').hide();
-	$('div#time-out').show();
-}
 
 // Takes two points, returns miles between them.
 function distance(lat1, lon1, lat2, lon2) {

@@ -315,6 +315,60 @@ if(!$alreadywon){
     }
 }
 
+//Checking if played over 20 rounds
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 25";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT COUNT(*) FROM played WHERE user_id = $user_id) = (20)";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 25)";
+        mysql_query($query);
+        array_push($awards_won, 25);
+    }
+}
+
+//Checking if played over 100 rounds
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 26";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT COUNT(*) FROM played WHERE user_id = $user_id) = (100)";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 26)";
+        mysql_query($query);
+        array_push($awards_won, 26);
+    }
+}
+
+//Checking if played over 200 rounds
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 26";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT COUNT(*) FROM played WHERE user_id = $user_id) = (200)";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 26)";
+        mysql_query($query);
+        array_push($awards_won, 26);
+    }
+}
+
+//Checking if played over 500 rounds
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 39";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT COUNT(*) FROM played WHERE user_id = $user_id) = (500)";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 39)";
+        mysql_query($query);
+        array_push($awards_won, 39);
+    }
+}
+
+//Checking if they ran out of time
+
 $awards_str = implode($awards_won, ',');
 $awards = array();
 if (count($awards_won)) {
