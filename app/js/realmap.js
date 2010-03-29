@@ -69,25 +69,25 @@ function calcDateScore(ticks) {
 }
 
 function begin() {
-	$("a#start").fadeOut(200);
-	$("a#share").fadeOut(200);
-    setTimeout(loadNewEvent, 200);
+	$("a#start").fadeOut(500);
+	$("a#share").fadeOut(500);
+    setTimeout(loadNewEvent, 500);
 }
 
 function loadNextButton() {
-	$("#next").fadeIn(250);
+	$("#next").fadeIn(500);
 }
 
 function loadAwardButton() {
-	$("#next-awards").fadeIn(250);
+	$("#next-awards").fadeIn(500);
 }
 
 function loadContinueButton() {
-	$("#continue").fadeIn(250);
+	$("#continue").fadeIn(500);
 }
 
 function loadNewCatButton() {
-	$("#new-category").fadeIn(250);
+	$("#new-category").fadeIn(500);
 }
 
 function updateEventCounter(index, total) {
@@ -196,11 +196,11 @@ function guessSubmit() {
 		    $('span#total_score').html(data.new_score);
 		    $('span#score').html(score);
 			if (data.awards_won.length == 0) {
-				setTimeout(loadNextButton, 1000);
+				setTimeout(loadNextButton, 500);
 			}
 			else {
 				$('#fake-facebox #award-info').html(data.awards_won.toString());	
-				setTimeout(loadAwardButton, 1000);
+				setTimeout(loadAwardButton, 500);
 			}
         }
     });
