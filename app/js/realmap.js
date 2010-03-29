@@ -10,6 +10,7 @@ var guessedMap = false;
 var guessedDate = false;
 
 var user_id;
+var category_id;
 var score = 0;
 var user_score = 0;
 var strikes = 0;
@@ -386,8 +387,8 @@ function distance(lat1, lon1, lat2, lon2) {
 
 $(document).ready(function(){
 	user_score = parseInt($("span#total_score").html());
-	user_id = parseInt($('div#user_id').html());
 	category_id = parseInt($("div#category_id").html());
+	user_id = parseInt($("div#user_id").html());
 	if (isNaN(category_id))
 		category_id = null;
 
