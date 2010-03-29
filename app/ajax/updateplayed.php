@@ -315,7 +315,19 @@ if(!$alreadywon){
     }
 }
 
-echo json_encode(array('new_score' => $new_score, 'awards_won' => $awards_won));
+$awards_str = implode($awards_won, ',');
+$awards = array();
+if (count($awards_won)) {
+	$query = "SELECT award_id, name, description, image FROM awards WHERE award_id IN ($awards_str)";
+	$result = mysql_query($query);
+
+	while ($award = mysql_fetch_assoc($result)) {
+		array_push($awards, $award);
+	}
+}
+
+
+echo json_encode(array('new_score' => $new_score, 'awards_won' => $awards_won, 'awards' => $awards));
 
 ?>
 

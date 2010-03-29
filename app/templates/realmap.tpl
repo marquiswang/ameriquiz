@@ -81,7 +81,7 @@
 				</ul>
 			</div>
 
-<div style="top: 150px; left: 192.5px; display: none;" id="fake-facebox">
+<div style="top: 150px; left: 80px; display: none;" id="fake-facebox">
 	<div class="popup">
          <table>
            <tbody>
@@ -93,12 +93,14 @@
                <td class="b"></td>
                <td class="body">
                  <div class="content" style="display: block;"><div style="" id="awards">
-				You've won an award!
+				<center>You've received an award!</center>
 				<div id="award-info">
+					<ul>
+					</ul>
 				</div>
 			</div></div>
                  <div class="footer" style="display: block;">
-                   <a class="close" href="#">OKAY</a>
+                   <a class="close" href="#">CONTINUE</a>
                  </div>
                </td>
                <td class="b"></td>

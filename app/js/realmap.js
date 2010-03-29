@@ -199,7 +199,11 @@ function guessSubmit() {
 				setTimeout(loadNextButton, 500);
 			}
 			else {
-				$('#fake-facebox #award-info').html(data.awards_won.toString());	
+				$('#fake-facebox #award-info ul').html();
+				for (var i in data.awards) {
+					var award = data.awards[i];
+					$('#fake-facebox #award-info ul').append('<li><img alt="'+award.name+'" src="images/badges/'+award.image+'" /> <br /> '+award.description+'</li>');
+				}
 				setTimeout(loadAwardButton, 500);
 			}
         }
