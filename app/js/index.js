@@ -6,16 +6,14 @@ $(document).ready(function() {
 	});
 	
 	$("a#category-play").click(function(e){
-		$("ul#nav1").hide();
-		$("ul#nav2").show();
-		$("ul#nav3").show();
+		$("div#main-nav").hide();
+		$("div#choose-category").show();
 		return false;
 	});
 	
 	$("a#menu").click(function(e){
-		$("ul#nav2").hide();
-		$("ul#nav3").hide();
-		$("ul#nav1").show();
+		$("div#main-nav").show();
+		$("div#choose-category").hide();
 		return false;
 	});
 	

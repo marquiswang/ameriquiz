@@ -23,7 +23,7 @@ var posGuessX = 0;
 var posGuessY = 0;
 
 var startButtonLoaded = true;
-var eventsInSet = 2;
+var eventsInSet = 20;
 
 var num_events_category=0;
 
