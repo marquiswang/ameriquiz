@@ -71,7 +71,6 @@ function begin() {
 	$("a#start").fadeOut(200);
 	$("a#share").fadeOut(200);
     setTimeout(loadNewEvent, 200);
-	alert('begin');
 }
 
 function loadNextButton() {
