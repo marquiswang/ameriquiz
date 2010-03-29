@@ -92,6 +92,7 @@ h2#desc {
 	width: 100px;
 	height: 1.5em;
 	display: table-cell;
+	display: none;
 	vertical-align: middle;
 	text-align: center;
 }

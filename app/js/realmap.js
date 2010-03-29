@@ -248,6 +248,7 @@ function loadNewEvent() {
     }
 	else {
 		eventIndex++;
+		$('#counter').fadeIn(250);
 		updateEventCounter(eventIndex, eventsInSet);
 	}
 
