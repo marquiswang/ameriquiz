@@ -20,7 +20,8 @@ else
 			event_categories 
 		LEFT JOIN events ON event_categories.event_id = events.event_id 
 		LEFT JOIN categories ON categories.category_id = event_categories.category_id 
-		WHERE event_categories.category_id = $category_id";
+		WHERE event_categories.category_id = $category_id
+		ORDER BY events.year, events.month, events.day";
 
 
 $result = mysql_query($query);
