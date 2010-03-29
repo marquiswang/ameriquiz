@@ -47,6 +47,7 @@
 				<div class='button action-button'>
 					<a id="share" class="continue" href="#">Share</a>
 					<a id="next" class="guessed" href="#">Next</a>
+					<a id="next-awards" class="guessed" href="#awards" rel="facebox">Next</a>
 					<a id="continue" class="continue" href="#">Continue Playing</a>
 					<a id="new-category" class ="newCat" href="index.php?{$fb_params}&new-category">New Category</a>
 					<a id="submit" class="guessed" href="#">Submit</a>
@@ -78,6 +79,10 @@
 					<li>Drag the date bar at the bottom to <b>when</b> the event took place.</li>
 					<li>Click on the map <b>where</b> the event took place.</li>
 				</ul>
+			</div>
+
+			<div id="awards" style="display: none">
+				You've won an award!
 			</div>
 
 		</div>

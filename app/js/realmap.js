@@ -71,10 +71,15 @@ function begin() {
 	$("a#start").fadeOut(200);
 	$("a#share").fadeOut(200);
     setTimeout(loadNewEvent, 200);
+	alert('begin');
 }
 
 function loadNextButton() {
 	$("#next").fadeIn(250);
+}
+
+function loadAwardButton() {
+	$("#next-awards").fadeIn(250);
 }
 
 function loadContinueButton() {
@@ -181,27 +186,24 @@ function guessSubmit() {
 	$('div#time-out').hide();
 	$('div#points').fadeIn(500);
 
-	// Post updated score to database
-	$.ajax({
-		url: 'ajax/updatescore.php',
-		data: {user_id : user_id, score: user_score},
-		type: "GET",
-		success: function() {
-	    $('span#total_score').html(user_score);
-	    $('span#score').html(score);
-		}
-	});
-
     // Post the last played to database and checks for awards
     $.ajax({
         url: 'ajax/updateplayed.php',
         data: {user_id : user_id, event_id: event_id, date_score: datePoints, loc_score: locationPoints, time_spent: time_spent},
         type: "GET",
-        success: function() {
+        dataType: 'json',
+        success: function(data) {
+		    $('span#total_score').html(data.new_score);
+		    $('span#score').html(score);
+			if (data.awards_won.length == 0) {
+				setTimeout(loadNextButton, 1000);
+			}
+			else {
+				setTimeout(loadAwardButton, 1000);
+			}
         }
     });
 
-	setTimeout(loadNextButton, 1000);
 }
 
 function loadNewEvent() {
@@ -413,7 +415,7 @@ $(document).ready(function(){
 	});
 
     // Display Rules before game begins
-	$('a[rel*=facebox]').facebox({
+	$('a#start').facebox({
 		loadingImage : 'styles/facebox/loading.gif',
 		closeButton   : 'PLAY',
 		onClose      : function() { 
@@ -421,8 +423,18 @@ $(document).ready(function(){
 			begin();
 			return false;
 		}
-	}) 
+	})
 
+	$('a#next-awards').facebox({
+		loadingImage : 'styles/facebox/loading.gif',
+		closeButton   : 'OKAY',
+		onClose      : function() { 
+			$(".guessed").fadeOut(250);
+			loadNewEvent();
+			return false;
+		}
+	})
+ 
 	///////////////////////////////////////////////////////////////////////////
 	// Register event handlers
 	$("a#share").click(function(e){

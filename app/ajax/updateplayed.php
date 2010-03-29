@@ -10,19 +10,33 @@ $loc_score = $_GET["loc_score"];
 $time_spent = $_GET["time_spent"];
 $cat_id = $_GET["cat_id"];
 
+$new_score = 0;
+
 //If no cat_id was passed in, determine the cat_id
 if (!($cat_id))
 {
     $query = "SELECT category_id FROM event_categories WHERE event_id = $event_id";
     $cat_id = mysql_result(mysql_query($query), 0);
-    echo "cat_id was not sent, cat_id was pulled from database and was: ",$cat_id," ";
 }
 
 //Update the played database
 if($user_id) {
     $query = "INSERT INTO played (user_id, timestamp, event_id, date_score, loc_score, time_spent) VALUES($user_id, NOW(), $event_id, $date_score, $loc_score, $time_spent)";
-    echo mysql_query($query) ? "Success" : "Error";
+	mysql_query($query);
+
+	$query = "UPDATE highscores SET score = score + $date_score + $loc_score, timestamp = NOW() WHERE user_id = $user_id";
+	mysql_query($query);
+
+	$query = "SELECT score FROM highscores WHERE user_id = $user_id";
+	$new_score = mysql_result(mysql_query($query), 0);
+	
 }
+else {
+	header("HTTP/1.0 500 Bad Data");
+	echo "No such User ID";
+	exit();
+}
+
 
 /*
 $preCheck = array(0);
@@ -49,7 +63,7 @@ foreach (array_keys($preCheck) as $n){
     }
 }
 */
-
+$awards_won = array();
 //Checking for finishing a category
 $query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 1";
 $alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
@@ -59,8 +73,8 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 1)";
         mysql_query($query);
+		array_push($awards_won, 1);
     }
-
 }
 
 //Checking for a perfect score on a question
@@ -71,6 +85,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 2)";
         mysql_query($query);
+		array_push($awards_won, 2);
     }
 }
 
@@ -82,6 +97,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 3)";
         mysql_query($query);
+		array_push($awards_won, 3);
     }
 }
 
@@ -97,6 +113,7 @@ if(!$alreadywon){
         {
             $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 4)";
             mysql_query($query);
+			array_push($awards_won, 4);
         }
     }
 }
@@ -109,6 +126,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 5)";
         mysql_query($query);
+		array_push($awards_won, 5);
     }
 }
 
@@ -124,6 +142,7 @@ if(!$alreadywon){
         {
             $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 6)";
             mysql_query($query);
+			array_push($awards_won, 6);
         }
     }
 }
@@ -136,6 +155,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 7)";
         mysql_query($query);
+		array_push($awards_won, 7);
     }
 }
 
@@ -148,6 +168,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 8)";
         mysql_query($query);
+		array_push($awards_won, 8);
     }
 }
 
@@ -160,6 +181,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 9)";
         mysql_query($query);
+		array_push($awards_won, 9);
     }
 }
 
@@ -172,6 +194,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 10)";
         mysql_query($query);
+		array_push($awards_won, 10);
     }
 }
 
@@ -184,6 +207,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 11)";
         mysql_query($query);
+		array_push($awards_won, 11);
     }
 }
 
@@ -196,6 +220,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 12)";
         mysql_query($query);
+		array_push($awards_won, 12);
     }
 }
 
@@ -208,6 +233,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 13)";
         mysql_query($query);
+		array_push($awards_won, 13);
     }
 }
 
@@ -220,6 +246,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 14)";
         mysql_query($query);
+		array_push($awards_won, 14);
     }
 }
 
@@ -232,6 +259,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 15)";
         mysql_query($query);
+		array_push($awards_won, 15);
     }
 }
 
@@ -244,6 +272,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 16)";
         mysql_query($query);
+		array_push($awards_won, 16);
     }
 }
 
@@ -256,6 +285,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 17)";
         mysql_query($query);
+		array_push($awards_won, 17);
     }
 }
 
@@ -268,6 +298,7 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 21)";
         mysql_query($query);
+		array_push($awards_won, 21);
     }
 }
 
@@ -280,10 +311,11 @@ if(!$alreadywon){
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 22)";
         mysql_query($query);
+		array_push($awards_won, 22);
     }
 }
 
-
+echo json_encode(array('new_score' => $new_score, 'awards_won' => $awards_won));
 
 ?>
 
