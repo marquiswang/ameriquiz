@@ -81,9 +81,35 @@
 				</ul>
 			</div>
 
-			<div id="awards" style="display: none">
+<div style="top: 150px; left: 192.5px; display: none;" id="fake-facebox">
+	<div class="popup">
+         <table>
+           <tbody>
+             <tr>
+				<td class="tl"></td>
+				<td class="b"></td><td class="tr"></td>
+             </tr>
+             <tr>
+               <td class="b"></td>
+               <td class="body">
+                 <div class="content" style="display: block;"><div style="" id="awards">
 				You've won an award!
-			</div>
+				<div id="award-info">
+				</div>
+			</div></div>
+                 <div class="footer" style="display: block;">
+                   <a class="close" href="#">OKAY</a>
+                 </div>
+               </td>
+               <td class="b"></td>
+             </tr>
+             <tr>
+               <td class="bl"></td><td class="b"></td><td class="br"></td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+     </div>
 
 		</div>
 	
