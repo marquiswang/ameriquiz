@@ -1,0 +1,19 @@
+a#return {
+	float: center;
+	color: #0e1f5b;
+	background-color: #d8dfea;
+	border:1px solid;
+	border-color: #95a5c6 #7f93bc #7f93bc #95a5c6;
+	text-decoration: none;
+	text-align: center;
+}
+
+table
+{
+	height: 270px;
+	display: block;
+	overflow: auto;
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	color: #333333;
+}
+
