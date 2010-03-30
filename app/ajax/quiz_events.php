@@ -2,8 +2,8 @@
 
 require "../lib/dbconnect.php";
 
-$num_events = $_GET["numEvents"];
-$category_id = $_GET["category_id"];
+$num_events = (int)$_GET["numEvents"];
+$category_id = (int)$_GET["category_id"];
 if ($category_id === "null")
 	$query = 
 		"SELECT 
