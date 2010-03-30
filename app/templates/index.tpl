@@ -38,7 +38,7 @@
 			<div id="choose-category" class="nav" {if $new_category}style="display: inline"{/if}>		
 				{foreach from=$categories item=category name=categories}
 					<ul id="nav2">
-						<li><a href='realmap.php?{$fb_params}&cat={$category.category_id}'>{$category.name}</a>
+						<li><a href='realmap.php?{$fb_params}&cat={$category.category_id}&catname={$category.name}'>{$category.name}</a>
 						</li>
 					</ul>
 				{/foreach}

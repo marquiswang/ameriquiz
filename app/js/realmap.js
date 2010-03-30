@@ -389,6 +389,7 @@ function distance(lat1, lon1, lat2, lon2) {
 $(document).ready(function(){
 	user_score = parseInt($("span#total_score").html());
 	category_id = parseInt($("div#category_id").html());
+	category_name = $("div#category_name").html();
 	user_id = parseInt($("div#user_id").html());
 	if (isNaN(category_id))
 		category_id = null;
