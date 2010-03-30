@@ -6,7 +6,7 @@ $num_events = (int)$_GET["numEvents"];
 $category_id = (int)$_GET["category_id"];
 
 // Assumes $category_id is non-zero.
-if ($category_id)
+if (!$category_id)
 	$query = 
 		"SELECT 
 			event_id, name, location, year, month, day, increment, longitude, latitude 
