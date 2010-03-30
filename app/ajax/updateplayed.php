@@ -368,6 +368,29 @@ if(!$alreadywon){
 }
 
 //Checking if they ran out of time
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 29";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $justwon = ($time_spent  == 30);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 29)";
+        mysql_query($query);
+        array_push($awards_won, 29);
+    }
+}
+
+//Checking if they ran out of time 3 times in a row
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 30";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT COUNT(*) FROM (SELECT time_spent FROM played WHERE user_id = $user_id ORDER BY timestamp DESC LIMIT 3) AS t WHERE time_spent = 30) = (3)";
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 30)";
+        mysql_query($query);
+        array_push($awards_won, 30);
+    }
+}
+
 
 $awards_str = implode($awards_won, ',');
 $awards = array();

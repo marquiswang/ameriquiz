@@ -161,7 +161,7 @@ function guessSubmit() {
     // Remove the submit button
     $('#submit').hide();
 
-    // Stop the countdown
+    // Stop countdown
     var time_spent = countdownStart - parseInt($('#countdown').html());
     $('#countdown').stop(true);
 	$('#countdown').html("");
@@ -330,8 +330,8 @@ function loadNewEvent() {
 	$('#countdown').countDown({
 		startNumber: countdownStart,
 		callBack: function(me) {
-       		guessSubmit(); 
-            loadNextButton()
+       		$('#countdown').html("0");
+            guessSubmit(); 
         } 
 	});
 }
