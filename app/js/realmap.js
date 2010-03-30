@@ -11,6 +11,7 @@ var guessedDate = false;
 
 var user_id;
 var category_id;
+var category_name;
 var score = 0;
 var user_score = 0;
 var strikes = 0;
