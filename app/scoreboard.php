@@ -99,7 +99,7 @@ if (!(is_array($friends)))
 	$friends = array();
 array_push($friends, $user_id);
 $friends_comma = implode(',', $friends);
-$query = "SELECT user_id, score, timestamp FROM highscores WHERE user_id IN ($friends_comma) ORDER BY score DESC";
+$query = "SELECT user_id, score, timestamp FROM highscores WHERE user_id IN ($friends_comma) ORDER BY score DESC LIMIT 10";
 $friend_result = mysql_query($query);
 
 // add friends to friend scoreboard
