@@ -19,10 +19,9 @@
 
 			<div id="main-nav" class="nav" {if $new_category}style="display: none"{/if}>
 				<div id="play">
-					<h4> Begin Playing </h4>
 					<ul id="play-buttons">
-						<li><a id='random-play' href='realmap.php?{$fb_params}'><b>Random Events</b></a></li>
-						<li><a id='category-play' href='#'><b>Historical Periods</b></a></li>
+						<li><a id='category-play' href='#'><b>Category Play</b></a></li>
+						<li><a id='random-play' href='realmap.php?{$fb_params}'><b>Random Play</b></a></li>
 					</ul>
 				</div>
 
@@ -38,7 +37,7 @@
 			<div id="choose-category" class="nav" {if $new_category}style="display: inline"{/if}>		
 				{foreach from=$categories item=category name=categories}
 					<ul id="nav2">
-						<li><a href='realmap.php?{$fb_params}&cat={$category.category_id}'>{$category.name}</a>
+						<li><a href='realmap.php?{$fb_params}&cat={$category.category_id}&catname={$category.name}'>{$category.name}</a>
 						</li>
 					</ul>
 				{/foreach}

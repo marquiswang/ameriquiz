@@ -32,6 +32,7 @@ $user_score = $result_assoc['score'];
 
 // category stuff
 $category_id = $_GET['cat'];
+$category_name = $_GET['catname'];
 
 // Call smarty template
 $smarty->assign('fb_params', $fb_params);
@@ -40,5 +41,6 @@ $smarty->assign('map', $map);
 $smarty->assign('user_score', $user_score);
 $smarty->assign('user_id', $user_id);
 $smarty->assign('category_id', $category_id);
+$smarty->assign('category_name', $category_name);
 
 $smarty->display('realmap.tpl');

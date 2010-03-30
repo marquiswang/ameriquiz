@@ -22,6 +22,7 @@
 		<div id="map_container">
 			<div id="user_id" class="hidden">{$user_id}</div>
 			<div id="category_id" class="hidden">{$category_id}</div>	
+			<div id="category_name" class="hidden">{$category_name}</div>	
 			<div id="map_header">
 				<h2 id="desc">When and Where?</h2>
 				<div class="score">
@@ -78,6 +79,7 @@
 				<ul>
 					<li>Drag the date bar at the bottom to <b>when</b> the event took place.</li>
 					<li>Click on the map <b>where</b> the event took place.</li>
+					<li>You've got 30 seconds, so don't run out of <b>time</b>.</li>
 				</ul>
 			</div>
 
