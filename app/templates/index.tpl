@@ -29,6 +29,7 @@
 				<ul id="nav1">	
 					<li><a href='rules.php?{$fb_params}'>About AmeriQuiz</a></li>
 					<li><a href='scoreboard.php?{$fb_params}'>High Scores</a></li>
+					<li><a href='badges.php?{$fb_params}'>Awards</a></li>
 					<li><a id='invite' href='#'>Invite a Friend</a></li>
 					<li><a id='review' rel="facebox" href='#review-info'>Review Our Game</a></li>
 				</ul>
