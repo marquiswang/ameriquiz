@@ -465,7 +465,7 @@ $(document).ready(function(){
 	});
 
 	$("a.newCat").click(function(e) {
-		window.top.location = $(this).attr('href');
+		window.location = $(this).attr('href');
 		return false;
 	});
 
