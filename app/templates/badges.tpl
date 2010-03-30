@@ -24,7 +24,7 @@
 	</tr>
 	{foreach from=$badges item=badge_info name=badges}
 		<tr>
-			<td scope="check"> </td>
+			<td scope="check">{if $badge_info.received}<img src="images/checkmark.jpg" width="25" height="25">{/if}</td>
 			<td scope="image"><img src="images/badges/{$badge_info.image}" width="150" height="40"></td>
 			<td scope="number">x {$badge_info.count}</td>
 			<td scope="description">{$badge_info.description}</td>
