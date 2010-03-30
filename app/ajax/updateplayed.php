@@ -342,15 +342,15 @@ if(!$alreadywon){
 }
 
 //Checking if played over 200 rounds
-$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 26";
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 27";
 $alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
 if(!$alreadywon){
     $query = "SELECT (SELECT COUNT(*) FROM played WHERE user_id = $user_id) = (200)";
     $justwon = mysql_result(mysql_query($query), 0);
     if($justwon){
-        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 26)";
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 27)";
         mysql_query($query);
-        array_push($awards_won, 26);
+        array_push($awards_won, 27);
     }
 }
 
@@ -364,6 +364,18 @@ if(!$alreadywon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 39)";
         mysql_query($query);
         array_push($awards_won, 39);
+    }
+}
+
+//Checking if 0 on time and place
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 28";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $justwon = $date_score == 0 && $loc_score == 0;
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 28)";
+        mysql_query($query);
+        array_push($awards_won, 28);
     }
 }
 
@@ -384,10 +396,48 @@ $query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 30";
 $alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
 if(!$alreadywon){
     $query = "SELECT (SELECT COUNT(*) FROM (SELECT time_spent FROM played WHERE user_id = $user_id ORDER BY timestamp DESC LIMIT 3) AS t WHERE time_spent = 30) = (3)";
+    $justwon = mysql_result(mysql_query($query), 0);
     if($justwon){
         $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 30)";
         mysql_query($query);
         array_push($awards_won, 30);
+    }
+}
+
+//Checking if they played in March
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 32";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $justwon =  strtotime(date("Y-m-d")) < strtotime("2010-04-01");
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 32)";
+        mysql_query($query);
+        array_push($awards_won, 32);
+    }
+}
+
+//Checking if they answered a question in under 3 seconds
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 33";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $justwon = $time_spent <= 3;
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 33)";
+        mysql_query($query);
+        array_push($awards_won, 33);
+    }
+}
+
+//Checking if they have tried every category
+$query = "SELECT * FROM userawards WHERE user_id = $user_id AND award_id = 37";
+$alreadywon = mysql_fetch_object(mysql_query($query)); //fetch_object works best because it returns false if there are no rows left, otherwise it just gives you whatever it is
+if(!$alreadywon){
+    $query = "SELECT (SELECT COUNT(DISTINCT event_categories.category_id) FROM played LEFT JOIN event_categories ON event_categories.event_id = played.event_id WHERE user_id = $user_id) = (SELECT COUNT(category_id) FROM categories)";
+    $justwon = mysql_result(mysql_query($query), 0);
+    if($justwon){
+        $query = "INSERT INTO userawards (user_id, timestamp, award_id) VALUES($user_id, NOW(), 37)";
+        mysql_query($query);
+        array_push($awards_won, 37);
     }
 }
 
