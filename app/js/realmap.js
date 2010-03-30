@@ -30,9 +30,11 @@ var countdownStart = 30;
 var locImage;
 		
 var message = 'I\'ve been playing this new American history game I found! Check it out!';
+var messageCat = 'I\'ve been playing AmeriQuiz and totally know my history!  Can you beat my score?';
 var attachment = {
 	'name': 'I know my American history!'
 };
+var attachmentCat;
 
 function callPublish(msg, attachment, action_link) {
   FB.ensureInit(function () {
@@ -250,7 +252,7 @@ function loadNewEvent() {
 		}
 		else {
 			$('#event').html('You\'ve just finished the entire set of '+eventsInSet+' questions in the category! Congratulations!');
-		    $("#share").show();
+		    $("#shareCat").show();
 		    $("a.newCat").show();
 		    loadNewCatButton();
 		    return;
@@ -394,6 +396,10 @@ $(document).ready(function(){
 	if (isNaN(category_id))
 		category_id = null;
 
+	attachmentCat = {
+		'name': 'I\'ve completed the ' +category_name+ ' category in AmeriQuiz!'
+		};
+	
 	loadQuiz(eventsInSet);
 
 	// Set map offset
@@ -434,6 +440,13 @@ $(document).ready(function(){
 		attachment.description = "I scored " + score + " points in AmeriQuiz!"
 		callPublish(message, attachment, null);
 	});
+	
+	$("a#shareCat").click(function(e){
+		FB.Connect.requireSession();
+		attachment.description = "I scored " + score + " points in AmeriQuiz!"
+		callPublish(messageCat, attachmentCat, null);
+	});
+	
 
 	$("a#submit").click(function(e){
 		guessSubmit();

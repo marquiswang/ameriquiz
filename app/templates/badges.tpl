@@ -10,7 +10,7 @@
 	
 	<p>
 	<h5>
-	Players of AmeriQuiz! are automatically awarded badges for reaching certain achievements in the game, the number of which are kept track here.  Acheivements can be based on number of questions answered, categories completed, total score, accuracy, and any number of fun things.  Some badges are more difficult to attain than others, so they are differentiated by color: <span style="color:black">white</span> being the easiest, <span style="color:red">red</span> being of moderate difficulty, and <span style="color:blue">blue</span> being the most challenging.
+	Players of AmeriQuiz! are automatically awarded badges for reaching certain achievements in the game.  Acheivements can be based on number of questions answered, categories completed, total score, accuracy, and any number of fun things.  Some badges are more difficult to attain than others, so they are differentiated by color: <span style="color:black">white</span> being the easiest, <span style="color:red">red</span> being of moderate difficulty, and <span style="color:blue">blue</span> being the most challenging.  The numbers indicate how many people have earned each badge.
 			</h5>
 		</p>
 	

@@ -47,6 +47,7 @@
 				<span id="status"></span>
 				<div class='button action-button'>
 					<a id="share" class="continue" href="#">Share</a>
+					<a id="shareCat" class = "shareCat" href ="#">Share</a>
 					<a id="next" class="guessed" href="#">Next</a>
 					<a id="next-awards" class="guessed" href="#awards" rel="facebox">Next</a>
 					<a id="continue" class="continue" href="#">Continue Playing</a>
