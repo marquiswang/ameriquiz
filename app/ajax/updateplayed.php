@@ -3,12 +3,20 @@
 require "../lib/dbconnect.php";
 
 //Add the recently played round to the database
-$user_id = $_GET["user_id"];
-$event_id = $_GET["event_id"];
-$date_score = $_GET["date_score"];
-$loc_score = $_GET["loc_score"];
-$time_spent = $_GET["time_spent"];
-$cat_id = $_GET["cat_id"];
+// Cast everything to int to be safe
+$user_id    = (int)$_GET["user_id"];
+$event_id   = (int)$_GET["event_id"];
+$date_score = (int)$_GET["date_score"];
+$loc_score  = (int)$_GET["loc_score"];
+$time_spent = (int)$_GET["time_spent"];
+$cat_id     = (int)$_GET["cat_id"];
+
+// Some input validation
+if ($date_score < 0 || $date_score > 100 || $loc_score < 0 || $loc_score > 100) {
+	header("HTTP/1.0 500 Bad Data");
+	echo "Impossible scores";
+	exit();
+}
 
 $new_score = 0;
 
