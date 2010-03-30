@@ -137,9 +137,8 @@ function markCorrectAnswers() {
 	$('#sol-date').css('left', currentEvent.dateSolution/120*100 + "%");
 
 	// Fade in images
-	information.fadeIn(500);
-	locImage.fadeIn(500);
-
+	$('#location-tag').fadeIn(500);
+	$('#loc-sol').fadeIn(500);
 	$('#slider-sol-marker').fadeIn(500);
 	$('#sol-date').fadeIn(500);
 	
@@ -163,8 +162,6 @@ function guessSubmit() {
 
     // Stop countdown
     var time_spent = countdownStart - parseInt($('#countdown').html());
-    $('#countdown').stop(true);
-	$('#countdown').html("");
 
     var event_id = currentEvent.event_id;
 
@@ -188,12 +185,10 @@ function guessSubmit() {
 	user_score += locationPoints
 	user_score += datePoints
 
-	markCorrectAnswers();
+	$('div#time-out').hide();
 
 	$('span#where-points').html(locationPoints);
 	$('span#when-points').html(datePoints);
-
-	$('div#time-out').hide();
 	$('div#points').fadeIn(500);
 
     // Post the last played to database and checks for awards
@@ -209,7 +204,7 @@ function guessSubmit() {
 				setTimeout(loadNextButton, 500);
 			}
 			else {
-				$('#fake-facebox #award-info ul').html();
+				$('#fake-facebox #award-info ul').html('');
 				for (var i in data.awards) {
 					var award = data.awards[i];
 					$('#fake-facebox #award-info ul').append('<li><img alt="'+award.name+'" src="images/badges/'+award.image+'" /> <br /> '+award.description+'</li>');
@@ -219,13 +214,11 @@ function guessSubmit() {
         }
     });
 
+	markCorrectAnswers();
 }
 
 function loadNewEvent() {
 	// Shift off first event off events array
-    $('#countdown').stop(true);
-	$('#countdown').html("");
-
 	currentEvent = events.shift();
 
 	// Clear previous events and guesses
@@ -331,6 +324,7 @@ function loadNewEvent() {
 		startNumber: countdownStart,
 		callBack: function(me) {
        		$('#countdown').html("0");
+			$('#countdown').hide();
             guessSubmit(); 
         } 
 	});
@@ -436,6 +430,8 @@ $(document).ready(function(){
 	});
 
 	$("a#submit").click(function(e){
+		$('#countdown').stop();
+		$('#countdown').hide();
 		guessSubmit();
 		$(this).fadeOut(500);
 		return false;
@@ -443,6 +439,8 @@ $(document).ready(function(){
 
 	$("a#next").click(function(e){
 		$(".guessed").fadeOut(250);
+		$('#countdown').stop();
+		$('#countdown').hide();
 		loadNewEvent();
 		return false;
 	});
@@ -455,12 +453,16 @@ $(document).ready(function(){
 	$('#fake-facebox a.close').click(function(e){
 		$(".guessed").fadeOut(250);
 		$('#fake-facebox').fadeOut(250);
+		$('#countdown').stop();
+		$('#countdown').hide();
 		loadNewEvent();
 		return false;
 	});
 	
 	$("a#continue").click(function(e){
 		$(".continue").fadeOut(250);
+		$('#countdown').stop();
+		$('#countdown').hide();
 		loadNewEvent();
 		return false;
 	});
