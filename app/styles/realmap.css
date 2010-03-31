@@ -131,8 +131,15 @@ img.map_marker {
 
 .button a {
 	text-decoration: none;
-	font-size: 2.5em;
 	color: #000;
+	background: #C3CDDF;
+	border:1px solid;
+	display:inline;
+	font-size:1.8em;
+	padding:5px 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .action-button {
