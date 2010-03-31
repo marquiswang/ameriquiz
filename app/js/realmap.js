@@ -159,7 +159,7 @@ function guessSubmit() {
 	$('#slider').slider('disable');
 	disableMap = true;
     // Remove the submit button
-    $('#submit').hide();
+    $('#submit').fadeOut(250);
 
     // Stop countdown
     var time_spent = countdownStart - parseInt($('#countdown').html());
@@ -434,7 +434,6 @@ $(document).ready(function(){
 		$('#countdown').stop();
 		$('#countdown').hide();
 		guessSubmit();
-		$(this).fadeOut(500);
 		return false;
 	});
 
