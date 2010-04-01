@@ -140,6 +140,7 @@ img.map_marker {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
+	margin-bottom: 20px;
 }
 
 .action-button {
@@ -152,10 +153,11 @@ img.map_marker {
 	top: 0;
 }
 
-
-
 #start-button {
-	margin-top: 180px;
+	position: absolute;
+	top: 165px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 a.continue {
