@@ -56,6 +56,7 @@ div#return-button {
 div#return-button a {
 	color: #0e1f5b;
 	text-decoration: none;
+	display: block;
 }
 
 

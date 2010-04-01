@@ -28,6 +28,7 @@ div#container
 .nav ul li a {
     color: #0e1f5b;
     text-decoration: none;
+	display: block;
 }
 
 
