@@ -8,6 +8,7 @@ var currentlyPlaying = false;
 var disableMap = true;
 var guessedMap = false;
 var guessedDate = false;
+var disableNext = false;
 
 var user_id;
 var category_id;
@@ -156,7 +157,8 @@ function guessMade() {
 }
 
 function guessSubmit() {
-	$('#slider').slider('disable');
+    disableNext = false;
+    $('#slider').slider('disable');
 	disableMap = true;
     // Remove the submit button
     $('#submit').fadeOut(250);
@@ -220,7 +222,7 @@ function guessSubmit() {
 
 function loadNewEvent() {
 	// Shift off first event off events array
-	currentEvent = events.shift();
+    currentEvent = events.shift();
 
 	// Clear previous events and guesses
 	$('.map_marker').hide();
@@ -438,10 +440,14 @@ $(document).ready(function(){
 	});
 
 	$("a#next").click(function(e){
-		$(".guessed").fadeOut(250);
+		if(!disableNext)
+        {
+        $(".guessed").fadeOut(250);
 		$('#countdown').stop();
 		$('#countdown').hide();
-		loadNewEvent();
+        loadNewEvent();
+        disableNext = true;
+        }
 		return false;
 	});
 	
