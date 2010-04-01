@@ -12,7 +12,7 @@
 		
 		<p>
 			<h5>
-				AmeriQuiz! was designed to be a fun, interactive means for high school students to study American history.  This game was designed in response to the Hidden Agenda project sponsored by Zynga as described <a href="http://facebook.com/haproject" target="_blank">here</a>.
+				AmeriQuiz! was designed to be a fun, interactive means for high school students to study American history.  Our goal in producing this game was to create a useful study tool that students would actually <i>want</i> to use in order to break the monotony of studying flash cards and note sheets. We hope that students will use our game to prepare for tests and AP exams as a fun way to refresh their knowledge of American history.  This game was designed in response to the Hidden Agenda project sponsored by Zynga as described <a href="http://facebook.com/haproject" target="_blank">here</a>.
 			</h5>
 		</p>
 	
