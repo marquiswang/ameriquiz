@@ -76,7 +76,7 @@ h2#desc {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	background-image: url("../maps/Mercator_World_Map_blue.png");
+	background-image: url("http://daedalus.marquiswang.com/haproject/maps/Mercator_World_Map_blue.jpg");
 }
 
 #map div#counter {
