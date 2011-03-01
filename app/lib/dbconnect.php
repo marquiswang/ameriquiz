@@ -1,9 +1,9 @@
 <?php
 
-$dbhost = 'localhost';
-$dbuser = 'hap_user';
-$dbpass = 't5fDg5d!';
-$dbname = 'haproject'; 
+$dbhost = '';
+$dbuser = '';
+$dbpass = '!';
+$dbname = ''; 
 
 
 // Connect to the database
